@@ -1,1138 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>JC Grading Paving Solution, Inc | Bay Area Asphalt, Concrete & Grading</title>
-<meta name="description" content="Trusted Bay Area paving contractor offering asphalt, concrete, and grading services. 20+ years of experience. Fast, reliable, licensed & insured."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JC Grading Paving Solution, Inc. | South Bay Grading, Paving &amp; Concrete</title>
+  <meta name="description" content="South Bay grading, paving, excavation, and concrete. JC Grading delivers correct prep, clean finishes, and surfaces built to last. Licensed &amp; Insured.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jcgradingpavingsolution.com/">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="assets/js/tailwind-theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tailwind-pages.css">
+  <script defer src="assets/js/site.js"></script>
+  <style>
+    body { background: #f6f2ea !important; color: #16171a; }
 
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+    header { background: rgba(255,255,255,0.96) !important; border-bottom-color: rgba(22,23,26,0.08) !important; }
+    header .logo-panel { background: transparent !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; }
+    #mobile-nav { background: #ffffff !important; border-top-color: rgba(22,23,26,0.08) !important; }
 
-:root {
-  --orange: #e8401c;
-  --black: #111111;
-  --white: #ffffff;
-  --gray: #666666;
-  --light-gray: #f5f5f5;
-  --border: #e8e8e8;
-  --text: #1a1a1a;
-}
+    /* Announce bar */
+    .jc-announce { background: #16171a; border-bottom: 1px solid rgba(255,255,255,0.08); }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--text);
-  overflow-x: hidden;
-}
+    /* Archivo display */
+    .jc-d {
+      font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: -0.02em !important;
+      line-height: 0.94 !important;
+    }
 
-/* ===================== NAV ===================== */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 28px;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid transparent;
-  transition: border-color .3s;
-}
-.nav.scrolled { border-bottom-color: var(--border); }
+    /* Section label */
+    .jc-lbl {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #c25a2a;
+    }
+    .jc-lbl::before { content: ''; display: inline-block; width: 24px; height: 1px; background: #c25a2a; }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+    /* Card number */
+    .jc-num {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #c25a2a;
+    }
 
-.hamburger-btn {
-  width: 46px; height: 46px;
-  background: var(--black);
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
-  flex-shrink: 0;
-  transition: background .2s;
-}
-.hamburger-btn:hover { background: #333; }
-.hamburger-btn span {
-  display: block;
-  width: 18px; height: 1.5px;
-  background: var(--white);
-  transition: all .3s;
-}
-.hamburger-btn.open span:nth-child(1) { transform: rotate(45deg) translate(4px,4px); }
-.hamburger-btn.open span:nth-child(2) { opacity: 0; }
-.hamburger-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(4px,-4px); }
+    .jc-cut { border-radius: 16px 0 16px 0 !important; }
 
-.nav-company-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-}
+    .jc-stat {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.06);
+    }
 
-.nav-logo img {
-  height: 54px;
-  width: auto;
-  display: block;
-}
-.nav-logo-fallback {
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: var(--black);
-  text-decoration: none;
-}
+    /* Service card */
+    .jc-svc {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(194,90,42,0.18);
+      background: #ffffff;
+      box-shadow: 0 18px 42px rgba(22,23,26,0.05);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      border-radius: 16px 0 16px 0;
+    }
+    .jc-svc::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 4px;
+      background: linear-gradient(90deg, #c25a2a 0%, #efb37a 100%);
+    }
+    .jc-svc:hover {
+      background: #fff6ed;
+      border-color: rgba(194,90,42,0.35);
+      transform: translateY(-2px);
+    }
+    .jc-svc:hover .jc-arr { color: #16171a; }
+    .jc-arr { color: #c25a2a; transition: color 0.15s; font-size: 1rem; }
 
-/* ===================== SLIDE-OUT MENU ===================== */
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  pointer-events: none;
-}
-.menu-overlay.open { pointer-events: all; }
+    .jc-card {
+      background: #ffffff;
+      border: 1px solid rgba(194,90,42,0.16);
+      border-radius: 16px 0 16px 0;
+      box-shadow: 0 18px 42px rgba(22,23,26,0.05);
+    }
 
-.menu-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0);
-  transition: background .35s;
-}
-.menu-overlay.open .menu-backdrop { background: rgba(0,0,0,0.18); }
+    /* Process day badge */
+    .jc-day {
+      display: inline-flex;
+      padding: 6px 12px;
+      background: #c25a2a;
+      color: #fff;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
 
-.menu-panel {
-  position: absolute;
-  top: 0; left: 0;
-  width: 360px;
-  max-width: 88vw;
-  min-height: 100vh;
-  background: var(--orange);
-  border-radius: 0 28px 28px 0;
-  padding: 20px 0 40px;
-  transform: translateX(-100%);
-  transition: transform .4s cubic-bezier(.77,0,.18,1);
-}
-.menu-overlay.open .menu-panel { transform: translateX(0); }
+    .jc-project {
+      overflow: hidden;
+      border: 1px solid rgba(22,23,26,0.08);
+      background: #ffffff;
+      box-shadow: 0 18px 42px rgba(22,23,26,0.05);
+      border-radius: 16px 0 16px 0;
+    }
+    .jc-project img {
+      height: 240px;
+      width: 100%;
+      object-fit: cover;
+    }
 
-.menu-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 22px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.18);
-  margin-bottom: 6px;
-}
-.menu-close {
-  width: 42px; height: 42px;
-  background: var(--white);
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .2s;
-}
-.menu-close:hover { transform: rotate(90deg); }
+    .jc-review {
+      border: 1px solid rgba(22,23,26,0.08);
+      background: #ffffff;
+      box-shadow: 0 18px 42px rgba(22,23,26,0.05);
+      border-radius: 16px 0 16px 0;
+    }
+    .jc-review.is-accent {
+      border-color: rgba(194,90,42,0.22);
+      background: linear-gradient(180deg, #fff7ef 0%, #ffffff 100%);
+    }
 
-.menu-cta {
-  background: var(--black);
-  color: var(--white);
-  border-radius: 24px;
-  padding: 11px 22px;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  transition: background .2s;
-}
-.menu-cta:hover { background: #333; }
+    /* License stamp card */
+    .jc-stamp {
+      border: 2px solid #c25a2a;
+      background: rgba(15,16,18,0.92);
+      padding: 20px 24px;
+      transform: rotate(-1.5deg);
+      max-width: 300px;
+    }
 
-.menu-links { list-style: none; }
-.menu-links li { border-bottom: 1px solid rgba(255,255,255,0.14); }
-.menu-links a {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  padding: 20px 22px;
-  text-decoration: none;
-  color: var(--white);
-  transition: background .15s;
-}
-.menu-links a:hover { background: rgba(255,255,255,0.1); }
-.menu-num { font-size: 12px; font-weight: 400; opacity: 0.55; min-width: 22px; }
-.menu-label { font-size: 19px; font-weight: 500; letter-spacing: -0.02em; }
+    .jc-form-panel {
+      background: #ffffff;
+      color: #16171a;
+      padding: 40px;
+      box-shadow: 0 24px 60px rgba(22,23,26,0.12);
+      border-radius: 16px 0 16px 0;
+    }
 
-.menu-social {
-  display: flex;
-  margin-top: 28px;
-  border-top: 1px solid rgba(255,255,255,0.14);
-}
-.menu-social a {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 22px;
-  color: var(--white);
-  text-decoration: none;
-  border-right: 1px solid rgba(255,255,255,0.14);
-  transition: background .15s;
-}
-.menu-social a:last-child { border-right: none; }
-.menu-social a:hover { background: rgba(255,255,255,0.1); }
+    /* Form fields */
+    .jc-field {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #d9d2c3;
+      padding: 0 14px;
+      height: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #16171a;
+      outline: none;
+      border-radius: 12px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .jc-field:focus { border-color: #c25a2a; box-shadow: none; }
+    .jc-textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #d9d2c3;
+      padding: 12px 14px;
+      height: 90px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #16171a;
+      outline: none;
+      resize: none;
+      border-radius: 12px;
+    }
+    .jc-textarea:focus { border-color: #c25a2a; }
+    .jc-flabel {
+      display: block;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #807a6e;
+      margin-bottom: 8px;
+    }
 
-/* ===================== PAGE ===================== */
-.page { padding-top: 80px; }
+    .jc-footer-link { color: #5f5a52; transition: color 0.15s ease; }
+    .jc-footer-link:hover { color: #c25a2a; }
 
-/* ===================== HERO ===================== */
-.hero { padding: 0 20px 40px; }
-.hero-card {
-  border-radius: 22px;
-  overflow: hidden;
-  position: relative;
-  height: 570px;
-  background: #222;
-}
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  opacity: 0.78;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.08) 55%, transparent 100%);
-}
-.hero-bottom {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 36px 40px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-}
-.hero-headline {
-  font-size: clamp(30px, 4.5vw, 58px);
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-  max-width: 580px;
-  opacity: 0;
-  transform: translateY(24px);
-  animation: fadeUp .8s .2s forwards;
-}
-.hero-contact-btn {
-  background: var(--black);
-  color: var(--white);
-  text-decoration: none;
-  border-radius: 32px;
-  padding: 14px 30px;
-  font-size: 15px;
-  font-weight: 500;
-  white-space: nowrap;
-  letter-spacing: -0.01em;
-  flex-shrink: 0;
-  opacity: 0;
-  animation: fadeUp .8s .4s forwards;
-  transition: background .2s;
-}
-.hero-contact-btn:hover { background: #333; }
-
-/* ===================== STATEMENT ===================== */
-.statement {
-  padding: 88px 28px;
-  max-width: 840px;
-  margin: 0 auto;
-  text-align: center;
-}
-.statement-eyebrow {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 18px;
-}
-.statement h1 {
-  font-size: clamp(26px, 3.8vw, 42px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-bottom: 28px;
-  color: var(--black);
-}
-.statement-body {
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.78;
-  color: var(--gray);
-}
-.statement-body + .statement-body { margin-top: 20px; }
-
-/* ===================== GALLERY ===================== */
-.gallery-section {
-  padding: 0 20px 80px;
-  max-width: 1160px;
-  margin: 0 auto;
-}
-.gallery-title {
-  text-align: center;
-  font-size: clamp(26px, 3.5vw, 42px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--black);
-  margin-bottom: 12px;
-}
-.gallery-subhead {
-  text-align: center;
-  font-size: 14px;
-  color: var(--gray);
-  margin-bottom: 40px;
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 10px;
-  height: 600px;
-}
-.g-item {
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  background: var(--light-gray);
-}
-.g-item.tall { grid-row: 1 / 3; }
-.g-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .5s ease;
-}
-.g-item:hover img { transform: scale(1.04); }
-.g-label {
-  position: absolute;
-  top: 14px; left: 14px;
-  background: rgba(0,0,0,0.65);
-  color: var(--white);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  padding: 5px 10px;
-  border-radius: 6px;
-  text-transform: uppercase;
-  line-height: 1.3;
-  max-width: calc(100% - 28px);
-}
-
-/* ===================== STORY ===================== */
-.story-section {
-  padding: 88px 28px;
-  max-width: 840px;
-  margin: 0 auto;
-  text-align: center;
-}
-.story-eyebrow { font-size: 13px; font-weight: 700; margin-bottom: 16px; color: var(--text); }
-.story-section h2 {
-  font-size: clamp(26px, 3.8vw, 42px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-bottom: 28px;
-  color: var(--black);
-}
-.story-body { font-size: 17px; line-height: 1.78; color: var(--gray); }
-
-/* ===================== VIDEO + WHY ===================== */
-.why-section {
-  padding: 0 20px 80px;
-  max-width: 1160px;
-  margin: 0 auto;
-}
-.why-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  align-items: stretch;
-}
-.why-video-wrap {
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  min-height: 460px;
-}
-.why-video-wrap video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  min-height: 460px;
-}
-.video-img-fallback {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: none;
-  min-height: 460px;
-}
-.pp-btn {
-  position: absolute;
-  bottom: 18px; right: 18px;
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.55);
-  border: none;
-  color: var(--white);
-  font-size: 17px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(4px);
-  transition: background .2s;
-}
-.pp-btn:hover { background: rgba(0,0,0,0.8); }
-
-.why-card {
-  border: 2.5px solid var(--orange);
-  border-radius: 20px;
-  padding: 44px 38px;
-  display: flex;
-  flex-direction: column;
-}
-.why-card h2 {
-  font-size: 42px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--black);
-  margin-bottom: 20px;
-}
-.why-card > p {
-  font-size: 16px;
-  line-height: 1.68;
-  color: var(--gray);
-  margin-bottom: 36px;
-}
-.mini-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: auto;
-}
-.mini-card {
-  background: var(--light-gray);
-  border-radius: 14px;
-  padding: 22px 18px;
-}
-.mini-icon {
-  width: 28px; height: 28px;
-  background: var(--orange);
-  border-radius: 50%;
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  margin-bottom: 12px;
-}
-.mini-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--black);
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
-}
-.mini-text { font-size: 13px; line-height: 1.55; color: var(--gray); }
-
-/* ===================== QUALITY + STATS ===================== */
-.quality-wrap {
-  margin: 0 20px 80px;
-}
-.quality-banner {
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  min-height: 360px;
-  background: #1a2b1a;
-}
-.quality-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0.55;
-}
-.quality-content {
-  position: relative;
-  z-index: 2;
-  padding: 60px 48px 120px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.quality-headline {
-  font-size: clamp(24px, 3.5vw, 48px);
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  font-style: italic;
-  max-width: 560px;
-}
-.q-btn {
-  background: var(--black);
-  color: var(--white);
-  text-decoration: none;
-  border-radius: 32px;
-  padding: 14px 28px;
-  font-size: 15px;
-  font-weight: 500;
-  white-space: nowrap;
-  flex-shrink: 0;
-  margin-left: 28px;
-  transition: background .2s;
-  align-self: flex-start;
-}
-.q-btn:hover { background: #333; }
-
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 10px;
-  margin-top: -60px;
-  padding: 0 2px;
-  position: relative;
-  z-index: 3;
-}
-.s-card {
-  border: 1.5px solid var(--orange);
-  border-radius: 16px;
-  padding: 24px 20px;
-  background: rgba(16,16,16,0.88);
-  backdrop-filter: blur(8px);
-}
-.s-big {
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.03em;
-  margin-bottom: 10px;
-}
-.s-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--orange);
-  margin-bottom: 6px;
-}
-.s-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.45; }
-
-/* ===================== COMMUNITY ===================== */
-.community {
-  padding: 88px 28px 56px;
-  max-width: 840px;
-  margin: 0 auto;
-  text-align: center;
-}
-.community-eyebrow { font-size: 13px; color: var(--gray); margin-bottom: 14px; }
-.community h2 {
-  font-size: clamp(26px, 3.8vw, 42px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-  color: var(--black);
-}
-.community p { font-size: 17px; line-height: 1.78; color: var(--gray); }
-
-/* ===================== TRUST LOGOS ===================== */
-.trust-logos {
-  padding: 40px 20px 64px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.logos-flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 44px;
-  flex-wrap: wrap;
-}
-.logos-flex img {
-  height: 38px;
-  width: auto;
-  object-fit: contain;
-  opacity: 0.7;
-  filter: grayscale(15%);
-  transition: opacity .2s;
-}
-.logos-flex img:hover { opacity: 1; }
-
-/* ===================== REVIEWS ===================== */
-.reviews {
-  padding: 60px 20px 88px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.reviews h2 {
-  text-align: center;
-  font-size: clamp(24px, 3.5vw, 38px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--black);
-  margin-bottom: 44px;
-}
-.reviews-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.r-card {
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 26px;
-  transition: box-shadow .25s;
-}
-.r-card:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.07); }
-.r-top {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
-}
-.r-avatar {
-  width: 46px; height: 46px;
-  border-radius: 50%;
-  background: #d0d0d0;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 700;
-  color: #888;
-}
-.r-name { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: var(--black); margin-bottom: 4px; }
-.r-source { font-size: 12px; color: var(--gray); display: flex; align-items: center; gap: 5px; }
-.r-stars { color: var(--orange); }
-.r-text { font-size: 14px; line-height: 1.65; color: var(--gray); }
-.reviews-nav {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-}
-.r-arrow {
-  width: 34px; height: 34px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  background: var(--white);
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background .2s;
-}
-.r-arrow:hover { background: var(--light-gray); }
-
-/* ===================== FOOTER ===================== */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 0 28px;
-}
-.f-nav {
-  padding: 52px 0 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 44px;
-}
-.f-pill {
-  border: 1px solid var(--border);
-  border-radius: 36px;
-  padding: 12px 26px;
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  transition: background .2s, border-color .2s;
-}
-.f-pill:hover { background: var(--light-gray); border-color: #ccc; }
-
-.f-inner { max-width: 1100px; margin: 0 auto; }
-.f-cta {
-  display: block;
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--black);
-  text-decoration: none;
-  margin-bottom: 44px;
-  transition: color .2s;
-}
-.f-cta:hover { color: var(--orange); }
-
-.f-contact {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-.f-addr { font-size: 13px; line-height: 1.75; color: var(--gray); }
-.f-addr-name { font-size: 14px; font-weight: 600; color: var(--black); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-.f-link { font-size: 13px; color: var(--gray); text-decoration: none; transition: color .2s; }
-.f-link:hover { color: var(--black); }
-
-.f-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 44px;
-}
-.f-copy { font-size: 12px; color: var(--gray); }
-.f-privacy { font-size: 12px; color: var(--gray); text-decoration: none; transition: color .2s; }
-.f-privacy:hover { color: var(--black); }
-
-.f-brand {
-  text-align: center;
-  padding: 28px 0 36px;
-  border-top: 1px solid var(--border);
-}
-.f-brand-logo {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-.f-brand-logo img {
-  height: 52px;
-  width: auto;
-  opacity: 0.7;
-}
-.f-brand-fallback {
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: var(--black);
-  opacity: 0.5;
-  text-align: center;
-}
-.f-brand-sub {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray);
-  font-weight: 600;
-}
-
-/* ===================== ANIMATIONS ===================== */
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity .65s ease, transform .65s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-d1 { transition-delay: .12s; }
-.reveal-d2 { transition-delay: .22s; }
-.reveal-d3 { transition-delay: .32s; }
-
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 900px) {
-  .why-grid { grid-template-columns: 1fr; }
-  .why-video-wrap { min-height: 300px; }
-  .why-video-wrap video { min-height: 300px; }
-  .stats-row { grid-template-columns: 1fr 1fr; }
-  .quality-content { padding-bottom: 100px; }
-}
-@media (max-width: 640px) {
-  .nav { padding: 13px 16px; }
-  .nav-company-name { font-size: 12px; }
-  .hero { padding: 0 12px 28px; }
-  .hero-card { height: 430px; border-radius: 18px; }
-  .hero-bottom { padding: 24px 22px; flex-wrap: wrap; gap: 14px; }
-  .gallery-section { padding: 0 12px 60px; }
-  .gallery-grid { height: auto; grid-template-columns: 1fr; }
-  .g-item.tall { grid-row: auto; }
-  .g-item { height: 260px; }
-  .why-section { padding: 0 12px 60px; }
-  .mini-cards { grid-template-columns: 1fr; }
-  .quality-wrap { margin: 0 12px 60px; }
-  .quality-content { padding: 36px 28px 100px; flex-wrap: wrap; }
-  .q-btn { margin-left: 0; margin-top: 20px; }
-  .stats-row { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .s-card { padding: 18px 14px; border-radius: 12px; }
-  .reviews-cards { grid-template-columns: 1fr; }
-  .f-contact { flex-direction: column; gap: 18px; }
-  .f-bottom { flex-direction: column; gap: 10px; text-align: center; }
-  .f-nav { gap: 8px; }
-  .f-pill { padding: 10px 18px; font-size: 14px; }
-}
-</style>
+    @media (max-width: 640px) {
+      .jc-hero-actions a { width: 100%; }
+      .jc-project img { height: 220px; }
+      .jc-form-panel { padding: 28px 24px; }
+    }
+  </style>
 </head>
-<body>
+<body class="antialiased">
 
-<!-- MENU OVERLAY -->
-<div class="menu-overlay" id="menuOverlay">
-  <div class="menu-backdrop" id="menuBackdrop"></div>
-  <div class="menu-panel">
-    <div class="menu-top">
-      <button class="menu-close" id="menuClose">✕</button>
-      <a href="#contact" class="menu-cta" onclick="closeMenu()">Get Free Estimate</a>
+  <!-- ── ANNOUNCE BAR ── -->
+  <div class="jc-announce py-2 px-4">
+    <div class="mx-auto flex max-w-7xl items-center justify-between">
+      <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4)">★ South Bay Grading &amp; Paving · 20+ Yrs Field Experience</p>
+      <p class="hidden sm:block" style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Licensed · Bonded · Insured</p>
     </div>
-    <ul class="menu-links">
-      <li><a href="#" onclick="closeMenu()"><span class="menu-num">01</span><span class="menu-label">Home</span></a></li>
-      <li><a href="#story" onclick="closeMenu()"><span class="menu-num">02</span><span class="menu-label">About</span></a></li>
-      <li><a href="#gallery" onclick="closeMenu()"><span class="menu-num">03</span><span class="menu-label">Projects</span></a></li>
-      <li><a href="#contact" onclick="closeMenu()"><span class="menu-num">04</span><span class="menu-label">Contact</span></a></li>
-      <li><a href="#why" onclick="closeMenu()"><span class="menu-num">05</span><span class="menu-label">Services</span></a></li>
-      <li><a href="#contact" onclick="closeMenu()"><span class="menu-num">06</span><span class="menu-label">Financing</span></a></li>
-    </ul>
-    <div class="menu-social">
-      <a href="https://www.instagram.com/jc_gradingpavingsolution/" target="_blank" aria-label="Instagram">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </div>
+
+  <!-- ── HEADER ── -->
+  <header class="sticky top-0 z-50 border-b backdrop-blur">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a class="logo-panel flex items-center gap-2.5" href="index.html" aria-label="JC Grading Paving Solution home">
+        <img class="h-9 w-auto" src="https://github.com/user-attachments/assets/fc836631-3353-4a15-a1c0-7a277559a161" alt="JC Grading emblem" decoding="async">
+        <span class="hidden text-sm font-semibold text-[#16171a] sm:inline" style="letter-spacing:0.02em">JC Grading</span>
       </a>
-      <a href="https://www.linkedin.com/company/jc-grading-paving-solution-inc/" target="_blank" aria-label="LinkedIn">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10V9h4v1.7a5.1 5.1 0 0 1 4-1.7z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
 
-<!-- NAV -->
-<nav id="mainNav">
-  <div class="nav-left">
-    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-    <span class="nav-company-name">JC Grading Paving Solution, Inc</span>
-  </div>
-  <a href="/" class="nav-logo">
-    <img
-      src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68e9ee3d16529559bf7ea7aa_Untitled%20Project%20(2).png"
-      alt="JC Logo"
-      onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';"
-    />
-    <span id="logoFallback" class="nav-logo-fallback" style="display:none;">JC</span>
-  </a>
-</nav>
+      <button class="jc-cut inline-flex h-10 w-10 items-center justify-center border border-zinc-200 text-[#16171a] md:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined" style="font-size:20px" aria-hidden="true">menu</span>
+      </button>
 
-<!-- PAGE -->
-<div class="page">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-card">
-      <img
-        src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68e99611ee004517566c9798_IMG_3433.jpeg"
-        alt="Asphalt paving crew at work"
-        class="hero-img"
-      />
-      <div class="hero-overlay"></div>
-      <div class="hero-bottom">
-        <h1 class="hero-headline">Precision. Quality. Expertise.</h1>
-        <a href="#contact" class="hero-contact-btn">Contact</a>
+      <div class="hidden items-center gap-6 md:flex">
+        <nav class="flex items-center gap-6" aria-label="Primary">
+          <a class="text-sm font-medium text-zinc-600 transition hover:text-construction-orange" href="index.html">Home</a>
+          <a class="text-sm font-medium text-zinc-600 transition hover:text-construction-orange" href="about.html">About</a>
+          <a class="text-sm font-medium text-zinc-600 transition hover:text-construction-orange" href="services.html">Services</a>
+          <a class="text-sm font-medium text-zinc-600 transition hover:text-construction-orange" href="contact.html">Contact</a>
+        </nav>
+        <a class="jc-cut inline-flex items-center justify-center bg-construction-orange px-5 font-bold text-white transition hover:bg-construction-orange-dark" style="height:40px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase" href="contact.html#estimate-form">Request Free Estimate</a>
       </div>
     </div>
-  </section>
 
-  <!-- WHO WE ARE -->
-  <div class="statement">
-    <p class="statement-eyebrow reveal"><strong>Who We Are</strong></p>
-    <h1 class="reveal reveal-d1">Welcome to JC Grading Paving Solution</h1>
-    <p class="statement-body reveal reveal-d2">With over 20 years of hands-on experience, we bring precision, quality, and expertise to every project. Founded in April 2024, our mission is to deliver top-tier grading, paving, and concrete services across the Bay Area and beyond. From driveways and patios to parking lots and roads, we take pride in transforming spaces that last.</p>
-    <p class="statement-body reveal reveal-d3">Behind the scenes, our dedicated operations team keeps projects moving — managing schedules, permits, logistics, and communication to ensure everything runs smoothly from start to finish. Every team member is trained in safety protocols, quality standards, and customer service, so our clients can expect professionalism at every stage of the job.</p>
-  </div>
-
-  <!-- GALLERY -->
-  <section class="gallery-section" id="gallery">
-    <h2 class="gallery-title reveal">From Cracked &amp; Dangerous to Smooth &amp; Safe</h2>
-    <p class="gallery-subhead reveal reveal-d1">Full Asphalt Demolition &bull; Site Grading &bull; New Paving &bull; ADA-Compliant Striping</p>
-    <div class="gallery-grid reveal reveal-d2">
-      <div class="g-item tall">
-        <div class="g-label">BEFORE: Deteriorated &amp; Unsafe</div>
-        <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68e90f78d14e952c94907a19_1.png" alt="Before"/>
-      </div>
-      <div class="g-item">
-        <div class="g-label">IN PROGRESS: Expert Demolition &amp; Site Prep</div>
-        <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68e8aedfd6debb9854e12763_3.png" alt="In progress"/>
-      </div>
-      <div class="g-item">
-        <div class="g-label">AFTER: Flawless Finish &amp; Professional Striping</div>
-        <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68e90f7419f6520d4880e622_5.png" alt="After"/>
-      </div>
+    <div id="mobile-nav" class="hidden border-t" data-mobile-nav>
+      <nav class="mx-auto flex max-w-7xl flex-col px-4 py-4 sm:px-6" aria-label="Mobile">
+        <a class="border-b border-zinc-100 py-3 text-sm font-medium text-zinc-700" href="index.html">Home</a>
+        <a class="border-b border-zinc-100 py-3 text-sm font-medium text-zinc-700" href="about.html">About</a>
+        <a class="border-b border-zinc-100 py-3 text-sm font-medium text-zinc-700" href="services.html">Services</a>
+        <a class="py-3 text-sm font-medium text-zinc-700" href="contact.html">Contact</a>
+        <a class="jc-cut mt-4 inline-flex items-center justify-center bg-construction-orange font-bold text-white transition hover:bg-construction-orange-dark" style="height:48px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase" href="contact.html#estimate-form">Request Free Estimate</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- STORY -->
-  <section class="story-section reveal" id="story">
-    <p class="story-eyebrow"><strong>Our Story</strong></p>
-    <h2>Meet the Owner, Jose C.</h2>
-    <p class="story-body">I have worked in the construction industry for over 10 years, following in the footsteps of my father and other family members. I worked for another company for most of my time in the industry and I always had a dream to own my own company and build a successful company and a legacy I could pass down to my children. I decided that if I wanted to build a company like I had dreamt about, I needed to get started. I founded JC Grading Paving Solution, Inc. in 2024.</p>
-  </section>
+  <main>
 
-  <!-- VIDEO + WHY US -->
-  <section class="why-section" id="why">
-    <div class="why-grid">
-      <div class="why-video-wrap reveal">
-        <video id="siteVideo" autoplay loop muted playsinline poster="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d306469d305efd201e91e9_more-poster-00001.jpg">
-          <source src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d306469d305efd201e91e9_more-transcode.mp4" type="video/mp4"/>
-          <source src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d306469d305efd201e91e9_more-transcode.webm" type="video/webm"/>
-        </video>
-        <button class="pp-btn" id="ppBtn" aria-label="Pause">⏸</button>
-      </div>
-      <div class="why-card reveal reveal-d2">
-        <h2>Why us?</h2>
-        <p>We're a local Bay Area contractor with over 10 years of hands-on experience, delivering precision, reliability, and lasting quality on every project.</p>
-        <div class="mini-cards">
-          <div class="mini-card">
-            <div class="mini-icon">✦</div>
-            <div class="mini-title">Service excellence</div>
-            <p class="mini-text">Every grading, paving, and concrete project is handled with care and built to last.</p>
+    <!-- ── HERO ── -->
+    <section class="relative overflow-hidden" style="min-height:78vh" aria-labelledby="hero-heading">
+      <!-- Background video -->
+      <video class="absolute inset-0 h-full w-full object-cover" src="https://ivhxwbmlmqhqncbkjuou.supabase.co/storage/v1/object/public/dgo%20video/Untitled-4.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(15,16,18,0.92) 0%,rgba(15,16,18,0.72) 48%,rgba(15,16,18,0.25) 100%)" aria-hidden="true"></div>
+
+      <!-- Content grid -->
+      <div class="relative z-10 mx-auto grid w-full max-w-7xl items-center px-4 py-28 sm:px-6 lg:grid-cols-[1.3fr_1fr] lg:px-8 lg:py-36">
+
+        <!-- Left: headline + CTAs -->
+        <div>
+          <div class="jc-lbl mb-6">Grading · Paving · Concrete</div>
+          <h1 id="hero-heading" class="jc-d" style="font-size:clamp(64px,9vw,108px)">
+            <span class="block" style="color:#f5f1ea">Graded right.</span>
+            <span class="block" style="color:#c25a2a">Poured once.</span>
+          </h1>
+          <p class="mt-7 max-w-[520px] text-[17px] leading-7" style="color:rgba(245,241,234,0.82)">
+            South Bay homeowners call us when the driveway fails because the last crew skipped the base. We don't do that work.
+          </p>
+          <div class="jc-hero-actions mt-9 flex flex-wrap gap-3">
+            <a class="jc-cut inline-flex items-center justify-center bg-construction-orange font-bold text-white transition hover:bg-construction-orange-dark" style="height:54px;padding:0 2rem;font-size:13px;letter-spacing:0.08em;text-transform:uppercase" href="#quick-form">Get My Free Estimate</a>
+            <a class="jc-cut inline-flex items-center gap-2 border border-white/30 font-bold text-white transition hover:border-white/60 hover:bg-white/5" style="height:54px;padding:0 2rem;font-size:13px;letter-spacing:0.08em;text-transform:uppercase" href="tel:4087862330">
+              <span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">phone</span>
+              Call Now
+            </a>
           </div>
-          <div class="mini-card">
-            <div class="mini-icon">✦</div>
-            <div class="mini-title">Relationship-driven</div>
-            <p class="mini-text">We keep communication clear and the process stress-free from start to finish.</p>
+        </div>
+
+        <!-- Right: welcoming panel (desktop only) -->
+        <div class="hidden justify-end lg:flex">
+          <div class="jc-stamp">
+            <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c25a2a">We're here to help</p>
+            <p class="jc-d mt-2" style="font-size:1.75rem;color:#f5f1ea;letter-spacing:-0.01em">Free estimates. Real answers.</p>
+            <p class="mt-3 text-[13px] leading-6" style="color:rgba(245,241,234,0.65)">Submit the form or reach out directly. A real person follows up the same business day.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- QUALITY BANNER + STATS -->
-  <div class="quality-wrap reveal">
-    <div class="quality-banner">
-      <img class="quality-bg" src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68e9e0c7adc1bb7f27a5fea7_Untitled%20(2).jpeg" alt="Heavy equipment"/>
-      <div class="quality-content">
-        <h2 class="quality-headline">Quality Paving. Reliable Service. Local Expertise.</h2>
-        <a href="#story" class="q-btn">About</a>
+    <section class="py-16" style="background:#16171a" aria-labelledby="stats-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 id="stats-heading" class="sr-only">Company stats</h2>
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div class="jc-stat p-6">
+            <p class="jc-num">Field Experience</p>
+            <p class="jc-d mt-3 text-[2.2rem]" style="color:#ffffff">20+ Years</p>
+            <p class="mt-2 text-sm leading-6" style="color:rgba(245,241,234,0.6)">Hands-on paving, grading, and concrete experience across the South Bay.</p>
+          </div>
+          <div class="jc-stat p-6">
+            <p class="jc-num">Client Rating</p>
+            <p class="jc-d mt-3 text-[2.2rem]" style="color:#ffffff">4.9 Rating</p>
+            <p class="mt-2 text-sm leading-6" style="color:rgba(245,241,234,0.6)">Strong review signals built on clear communication and clean work.</p>
+          </div>
+          <div class="jc-stat p-6">
+            <p class="jc-num">Response Goal</p>
+            <p class="jc-d mt-3 text-[2.2rem]" style="color:#ffffff">24 Hours</p>
+            <p class="mt-2 text-sm leading-6" style="color:rgba(245,241,234,0.6)">Estimate requests get quick follow-up and a direct next step.</p>
+          </div>
+          <div class="jc-stat p-6">
+            <p class="jc-num">Completed Work</p>
+            <p class="jc-d mt-3 text-[2.2rem]" style="color:#ffffff">1,800 Jobs</p>
+            <p class="mt-2 text-sm leading-6" style="color:rgba(245,241,234,0.6)">Residential and commercial surfaces completed with correct prep.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="stats-row">
-      <div class="s-card">
-        <div class="s-big">Local</div>
-        <div class="s-title">20+ Years Experience</div>
-        <div class="s-desc">Proven results in paving and concrete.</div>
-      </div>
-      <div class="s-card">
-        <div class="s-big">Covered</div>
-        <div class="s-title">Licensed &amp; Insured</div>
-        <div class="s-desc">CA License #1118177.</div>
-      </div>
-      <div class="s-card">
-        <div class="s-big">Ready</div>
-        <div class="s-title">Residential &amp; Commercial</div>
-        <div class="s-desc">Driveways, lots, and more.</div>
-      </div>
-      <div class="s-card">
-        <div class="s-big">100%</div>
-        <div class="s-title">Customer Satisfaction</div>
-        <div class="s-desc">5-star reviews, repeat clients.</div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- COMMUNITY -->
-  <section class="community reveal" id="contact">
-    <p class="community-eyebrow">Customer Commitment</p>
-    <h2>Community, Trust &amp; Reliability</h2>
-    <p>At JC Grading Paving Solution, we're more than paving experts, we're building opportunities. We create jobs, teach the trade, and invest in a skilled workforce. As a licensed and insured company (CA License #1118177), you can trust us to deliver quality results on every project, big or small.</p>
-  </section>
+    <!-- ── SERVICES ── -->
+    <section class="bg-white py-28" id="services" aria-labelledby="services-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div class="max-w-3xl">
+            <p class="jc-lbl mb-3">Services</p>
+            <h2 id="services-heading" class="jc-d" style="font-size:clamp(2.4rem,6vw,5rem);color:#16171a">What We Do.</h2>
+            <p class="mt-4 max-w-2xl text-base leading-8 text-zinc-600">
+              Every service starts with site prep, drainage, and base work that support the finish above it.
+            </p>
+            <p class="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">JC Grading provides grading, paving, concrete, drainage, excavation, and repair services across the South Bay with a focus on proper site prep and long-term surface performance.</p>
+          </div>
+          <a class="jc-cut hidden items-center gap-1.5 border border-[#e7dfd2] bg-[#fff6ed] px-5 py-2.5 font-bold text-[#16171a] transition hover:border-[#c25a2a] hover:text-construction-orange sm:inline-flex" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase" href="services.html">All Services</a>
+        </div>
 
-  <!-- TRUST LOGOS -->
-  <div class="trust-logos reveal">
-    <div class="logos-flex">
-      <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d31390b76122f47706426b_Google-Review-Logo.png" alt="Google Reviews"/>
-      <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d313e142f7dc0b7a9b5158_YelpLogoAugust2021.webp" alt="Yelp"/>
-      <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d31416de23fda270cec474_facebook-reviews-logo.png.webp" alt="Facebook Reviews"/>
-      <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d314799bd2392fac99a89e_360_F_534585390_h0Qrfwp3KwpDm0CXF2HpS2wjEizUNzUi.jpg" alt="Licensed & Insured"/>
-      <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d3146451cbf7dceb620261_get-accredited-small.jpeg" alt="BBB Accredited"/>
-      <img src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d314717ee730563f52002c_cslb-logo.webp" alt="CSLB"/>
-    </div>
-  </div>
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <a href="services.html" class="jc-svc group p-7">
+            <div class="mb-6 flex items-start justify-between"><span class="jc-num">S-01</span><span class="jc-arr">↗</span></div>
+            <p class="jc-d text-[1.55rem]" style="color:#16171a">Grading</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">Rough and fine grading that sets slope, drainage, and compaction up correctly.</p>
+          </a>
+          <a href="services.html" class="jc-svc group p-7">
+            <div class="mb-6 flex items-start justify-between"><span class="jc-num">S-02</span><span class="jc-arr">↗</span></div>
+            <p class="jc-d text-[1.55rem]" style="color:#16171a">Driveways</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">Asphalt and concrete driveway work focused on clean finish quality and long-term hold.</p>
+          </a>
+          <a href="services.html" class="jc-svc group p-7">
+            <div class="mb-6 flex items-start justify-between"><span class="jc-num">S-03</span><span class="jc-arr">↗</span></div>
+            <p class="jc-d text-[1.55rem]" style="color:#16171a">Paving</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">Parking lots, access roads, overlays, and paving installs built to spec.</p>
+          </a>
+          <a href="services.html" class="jc-svc group p-7">
+            <div class="mb-6 flex items-start justify-between"><span class="jc-num">S-04</span><span class="jc-arr">↗</span></div>
+            <p class="jc-d text-[1.55rem]" style="color:#16171a">Flatwork</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">Patios, walkways, curbs, and slabs poured with the right reinforcement and finish.</p>
+          </a>
+          <a href="services.html" class="jc-svc group p-7">
+            <div class="mb-6 flex items-start justify-between"><span class="jc-num">S-05</span><span class="jc-arr">↗</span></div>
+            <p class="jc-d text-[1.55rem]" style="color:#16171a">Drainage</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">French drains, swales, and runoff planning that protect the finished surface.</p>
+          </a>
+          <a href="services.html" class="jc-svc group p-7">
+            <div class="mb-6 flex items-start justify-between"><span class="jc-num">S-06</span><span class="jc-arr">↗</span></div>
+            <p class="jc-d text-[1.55rem]" style="color:#16171a">Excavation</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">Break-out, haul-off, trenching, and site clearing that keep the job moving cleanly.</p>
+          </a>
+          <a href="services.html" class="jc-svc group p-7">
+            <div class="mb-6 flex items-start justify-between"><span class="jc-num">S-07</span><span class="jc-arr">↗</span></div>
+            <p class="jc-d text-[1.55rem]" style="color:#16171a">Repairs</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">Concrete and asphalt repairs when restoration is the right long-term call.</p>
+          </a>
+          <a href="services.html" class="jc-svc group p-7">
+            <div class="mb-6 flex items-start justify-between"><span class="jc-num">S-08</span><span class="jc-arr">↗</span></div>
+            <p class="jc-d text-[1.55rem]" style="color:#16171a">Commercial</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">HOA, retail, school, and industrial surface work with clear coordination.</p>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <!-- REVIEWS -->
-  <section class="reviews">
-    <h2 class="reveal">Customer Reviews</h2>
-    <div id="reviewsWrap">
-      <div class="reviews-cards" id="reviewPage0">
-        <div class="r-card reveal">
-          <div class="r-top">
-            <div class="r-avatar">M</div>
-            <div>
-              <div class="r-name">Mackenzie J.</div>
-              <div class="r-source">Google Reviews <span class="r-stars">★★★★★</span></div>
+    <!-- ── GALLERY ── -->
+    <section class="py-28" style="background:#16171a" id="projects" aria-labelledby="projects-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div class="max-w-3xl">
+            <p class="jc-lbl mb-3">Projects</p>
+            <h2 id="projects-heading" class="jc-d" style="font-size:clamp(2.4rem,6vw,5rem);color:#f5f1ea">Work That Holds Up.</h2>
+            <p class="mt-4 max-w-2xl text-base leading-8" style="color:rgba(245,241,234,0.65)">
+              A few examples of grading, paving, concrete, and site prep work done for residential and commercial properties across the South Bay.
+            </p>
+          </div>
+          <a class="jc-cut hidden items-center gap-1.5 border border-white/20 px-5 py-2.5 font-bold text-white transition hover:border-construction-orange hover:text-construction-orange sm:inline-flex" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase" href="services.html">View Services</a>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-3">
+          <article class="jc-project">
+            <img src="https://github.com/user-attachments/assets/850eabf9-d4b1-4683-b3c1-cc5db943a257" alt="Completed asphalt driveway project" loading="lazy" decoding="async">
+            <div class="p-7">
+              <p class="jc-num">Residential Asphalt</p>
+              <h3 class="jc-d mt-3 text-[1.65rem]" style="color:#16171a">Driveway Replacement</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-600">Regrading, fresh base work, and new asphalt install for a cleaner finish and stronger surface.</p>
+            </div>
+          </article>
+
+          <article class="jc-project">
+            <img src="https://github.com/user-attachments/assets/d4bf2bd9-e624-4513-8260-4890304d5b66" alt="Completed concrete patio and walkway project" loading="lazy" decoding="async">
+            <div class="p-7">
+              <p class="jc-num">Concrete Flatwork</p>
+              <h3 class="jc-d mt-3 text-[1.65rem]" style="color:#16171a">Patio and Walkway Upgrade</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-600">Concrete and finish work completed with drainage in mind and a clean, ready-to-use surface.</p>
+            </div>
+          </article>
+
+          <article class="jc-project">
+            <img src="https://github.com/user-attachments/assets/5cc01a86-7f9e-4b2a-8578-c8c526486d2d" alt="School grounds paving and site work project" loading="lazy" decoding="async">
+            <div class="p-7">
+              <p class="jc-num">School Grounds</p>
+              <h3 class="jc-d mt-3 text-[1.65rem]" style="color:#16171a">Campus Paving &amp; Site Work</h3>
+              <p class="mt-3 text-sm leading-7 text-zinc-600">Asphalt paving, grading, and surface prep for a school campus. Coordinated around active schedules and strict site access requirements.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DIFFERENTIATORS ── -->
+    <section class="bg-white py-28" aria-labelledby="diff-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+          <p class="jc-lbl mb-4">Why JC Grading</p>
+          <h2 id="diff-heading" class="jc-d max-w-3xl" style="font-size:clamp(2rem,5vw,4.2rem);line-height:0.95;color:#16171a">
+            Three Reasons Clients Trust The Prep Under The Finish.
+          </h2>
+          <p class="mt-5 max-w-2xl text-sm leading-7 text-zinc-500">South Bay homeowners and commercial property owners trust JC Grading to prep, build, and finish surfaces correctly. Work that holds up because the foundation is done right.</p>
+        </div>
+
+        <div class="grid bg-white md:grid-cols-3" style="border:2px solid #c25a2a">
+          <div class="p-9" style="border-right:1px solid rgba(194,90,42,0.18)">
+            <p class="jc-num mb-5">Diff-01</p>
+            <p class="jc-d text-[1.65rem]" style="color:#16171a">Prep First.</p>
+            <p class="mt-4 text-sm leading-7 text-zinc-600">Drainage, grading, and compaction are handled before finish work so the surface has a real chance to last.</p>
+          </div>
+          <div class="p-9" style="border-right:1px solid rgba(194,90,42,0.18)">
+            <p class="jc-num mb-5">Diff-02</p>
+            <p class="jc-d text-[1.65rem]" style="color:#16171a">Clear Follow-Up.</p>
+            <p class="mt-4 text-sm leading-7 text-zinc-600">You get a direct response, a real conversation about scope, and a written path forward instead of vague answers.</p>
+          </div>
+          <div class="p-9">
+            <p class="jc-num mb-5">Diff-03</p>
+            <p class="jc-d text-[1.65rem]" style="color:#16171a">Built To Hold Up.</p>
+            <p class="mt-4 text-sm leading-7 text-zinc-600">If a short-term patch is not the right answer, we say so and explain what will protect the property better.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROCESS ── -->
+    <section class="bg-[#f3ede2] py-28" id="process" aria-labelledby="process-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12">
+          <p class="jc-lbl mb-4">Process</p>
+          <h2 id="process-heading" class="jc-d" style="font-size:clamp(2.4rem,6vw,5rem);color:#16171a">Three Steps.</h2>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <div class="jc-card relative p-9">
+            <div class="jc-day absolute right-6 top-0 -translate-y-1/2">Day 0</div>
+            <p class="jc-d text-[4rem] text-construction-orange">01</p>
+            <p class="jc-d mt-2 text-[1.65rem]" style="color:#16171a">Call or Form</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">Tell us where the project is, what surface you're dealing with, and what you're trying to fix or build.</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">We'll ask the right questions upfront so we don't waste your time with guesses or vague pricing.</p>
+          </div>
+          <div class="jc-card relative p-9">
+            <div class="jc-day absolute right-6 top-0 -translate-y-1/2">Days 1 to 5</div>
+            <p class="jc-d text-[4rem] text-construction-orange">02</p>
+            <p class="jc-d mt-2 text-[1.65rem]" style="color:#16171a">Site Walk</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">We look at access, grading, drainage, base conditions, and finish requirements before anything gets quoted.</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">Most issues come from what's underneath. This is where we make sure it's done right.</p>
+          </div>
+          <div class="jc-card relative p-9">
+            <div class="jc-day absolute right-6 top-0 -translate-y-1/2">Week 2+</div>
+            <p class="jc-d text-[4rem] text-construction-orange">03</p>
+            <p class="jc-d mt-2 text-[1.65rem]" style="color:#16171a">Build</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">We prep, install, and clean up with a clear scope and no shortcuts.</p>
+            <p class="mt-3 text-sm leading-7 text-zinc-600">You get a finished surface that holds up and a direct line if anything comes up after.</p>
+          </div>
+        </div>
+        <div class="mt-14 border-t border-zinc-200 pt-12 flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+          <p class="max-w-2xl text-base leading-8 text-zinc-600">Every project is built on proper prep, drainage, and base work. That's why our surfaces last and why clients don't have to redo the job a year later.</p>
+          <div class="shrink-0 text-center sm:text-left">
+            <a class="jc-cut inline-flex items-center justify-center bg-construction-orange font-bold text-white transition hover:bg-construction-orange-dark" style="height:54px;padding:0 2rem;font-size:13px;letter-spacing:0.08em;text-transform:uppercase" href="contact.html#estimate-form">Get My Free Estimate</a>
+            <p class="mt-2" style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#807a6e">Takes 30 seconds · Real response within 24 hours</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── REVIEWS ── -->
+    <section class="py-28" style="background:#0f1012" aria-labelledby="reviews-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 max-w-3xl">
+          <p class="jc-lbl mb-4">Reviews</p>
+          <h2 id="reviews-heading" class="jc-d" style="font-size:clamp(2.4rem,6vw,5rem);color:#f5f1ea">What Clients Say.</h2>
+          <p class="mt-4 text-base leading-8" style="color:rgba(245,241,234,0.6)">
+            Homeowners and businesses across the South Bay trust JC Grading for grading, paving, and concrete work that holds up over time. These reviews reflect proper prep, clear communication, and reliable results.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <article class="jc-review p-8">
+            <div class="mb-5 text-lg text-construction-orange">★★★★★</div>
+            <p class="leading-8" style="font-family:'Archivo',sans-serif;font-weight:500;font-size:19px;letter-spacing:-0.005em;color:#16171a">"Highly recommend JC Grading Paving Solution. We had such a positive experience."</p>
+            <div class="mt-6 border-t border-[#eee1d3] pt-5">
+              <p class="text-sm font-bold text-[#16171a]">Mackenzie J.</p>
+              <p class="mt-1" style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#7a746c">Google Review</p>
+            </div>
+          </article>
+          <article class="jc-review p-8" style="background:#c25a2a;border-color:transparent">
+            <div class="mb-5 text-lg" style="color:rgba(255,255,255,0.9)">★★★★★</div>
+            <p class="leading-8" style="font-family:'Archivo',sans-serif;font-weight:500;font-size:19px;letter-spacing:-0.005em;color:#fff">"They did quality work and kept to our schedule. I also appreciated how easy they made the business side."</p>
+            <div class="mt-6 border-t pt-5" style="border-color:rgba(255,255,255,0.25)">
+              <p class="text-sm font-bold text-white">Tyler T.</p>
+              <p class="mt-1" style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.65)">Google Review</p>
+            </div>
+          </article>
+          <article class="jc-review p-8">
+            <div class="mb-5 text-lg text-construction-orange">★★★★★</div>
+            <p class="leading-8" style="font-family:'Archivo',sans-serif;font-weight:500;font-size:19px;letter-spacing:-0.005em;color:#16171a">"Jose, Edgar, his father, and the rest of the crew did another stellar job."</p>
+            <div class="mt-6 border-t border-[#eee1d3] pt-5">
+              <p class="text-sm font-bold text-[#16171a]">Every S.</p>
+              <p class="mt-1" style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#7a746c">Google Review</p>
+            </div>
+          </article>
+        </div>
+        <div class="mt-12 text-center">
+          <a class="jc-cut inline-flex items-center justify-center bg-[#c25a2a] font-bold text-white transition hover:bg-[#a84a22]" style="height:52px;padding:0 2rem;font-size:13px;letter-spacing:0.08em;text-transform:uppercase" href="contact.html#estimate-form">Get My Free Estimate</a>
+          <p class="mt-3" style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,241,234,0.5)">Free estimates · Real response within 24 hours</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FREE ESTIMATE CTA ── -->
+    <section id="estimate" class="bg-[#c25a2a] py-28 text-white" aria-labelledby="cta-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.7)">Free Estimate</p>
+          <h2 id="cta-heading" class="jc-d mt-6 text-white" style="font-size:clamp(2.8rem,7vw,5.5rem)">Get it on the calendar.</h2>
+          <p class="mt-5 max-w-[540px] text-[18px] leading-8 text-white/85">Tell us about the surface, the location, and the scope. We will follow up within one business day with a clear next step.</p>
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 sm:max-w-[480px]">
+            <div class="jc-cut border border-white/20 bg-white/10 p-5">
+              <p class="text-2xl font-black text-white">24 hr</p>
+              <p class="mt-2 text-sm leading-6 text-white/80">Response goal on new estimate requests.</p>
+            </div>
+            <div class="jc-cut border border-white/20 bg-white/10 p-5">
+              <p class="text-2xl font-black text-white">Financing</p>
+              <p class="mt-2 text-sm leading-6 text-white/80">Available when the project scope needs flexibility.</p>
             </div>
           </div>
-          <p class="r-text">Highly recommend JC Grading Paving Solution! We had such a positive experience from start to finish.</p>
-        </div>
-        <div class="r-card reveal reveal-d1">
-          <div class="r-top">
-            <div class="r-avatar">T</div>
-            <div>
-              <div class="r-name">Tyler T.</div>
-              <div class="r-source">Google Reviews <span class="r-stars">★★★★★</span></div>
-            </div>
+          <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <a class="jc-cut inline-flex items-center justify-center bg-[#16171a] px-8 font-bold text-white transition hover:bg-black" style="min-height:54px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase" href="contact.html#estimate-form">Request Free Estimate</a>
+            <a class="jc-cut inline-flex items-center justify-center gap-2 border-2 border-white/60 px-8 font-bold text-white transition hover:bg-white/10" style="min-height:54px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase" href="tel:4087862330">
+              <span class="material-symbols-outlined" style="font-size:16px" aria-hidden="true">phone</span>
+              Call Now
+            </a>
           </div>
-          <p class="r-text">JC Grading Paving Solution did quality work and kept to our schedule. Professional from day one.</p>
         </div>
       </div>
-      <div class="reviews-cards" id="reviewPage1" style="display:none;">
-        <div class="r-card">
-          <div class="r-top">
-            <div class="r-avatar">E</div>
+    </section>
+
+    <!-- ── QUICK REQUEST ── -->
+    <section class="bg-white py-28" id="quick-form" aria-labelledby="quick-form-heading">
+      <div class="mx-auto max-w-[860px] px-4 sm:px-6 lg:px-8">
+        <div class="jc-form-panel">
+          <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c25a2a">Quick Request</p>
+          <h2 id="quick-form-heading" class="jc-d mt-3 mb-5" style="font-size:clamp(1.8rem,3.5vw,2.6rem);color:#16171a">Start your estimate.</h2>
+          <p class="mb-8 max-w-2xl text-base leading-7 text-zinc-600">Looking for grading, paving, concrete, drainage, or excavation work in the South Bay? Share your project details and we'll follow up with a clear next step.</p>
+          <form class="web3form grid gap-5" method="POST" data-recipient-email="projects@jcgradingpavingsolution.com" data-success-message="Thanks for reaching out. We'll follow up shortly.">
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New estimate request from JC Grading homepage">
+            <input type="hidden" name="from_name" value="JC Grading Homepage">
+            <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
             <div>
-              <div class="r-name">Every S.</div>
-              <div class="r-source">Google Reviews <span class="r-stars">★★★★★</span></div>
+              <label class="jc-flabel" for="est-name">Name</label>
+              <input id="est-name" name="name" type="text" class="jc-field" autocomplete="name" required>
             </div>
-          </div>
-          <p class="r-text">Jose, Edgar, his father and the rest of the crew did another stellar job. This team genuinely cares about the work.</p>
-        </div>
-        <div class="r-card">
-          <div class="r-top">
-            <div class="r-avatar">G</div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label class="jc-flabel" for="est-phone">Phone</label>
+                <input id="est-phone" name="phone" type="tel" class="jc-field" autocomplete="tel" required>
+              </div>
+              <div>
+                <label class="jc-flabel" for="est-email">Email</label>
+                <input id="est-email" name="email" type="email" class="jc-field" autocomplete="email" required>
+              </div>
+            </div>
             <div>
-              <div class="r-name">Grady L.</div>
-              <div class="r-source">Google Reviews <span class="r-stars">★★★★★</span></div>
+              <label class="jc-flabel" for="est-address">Address / City</label>
+              <input id="est-address" name="project_address" type="text" class="jc-field" autocomplete="street-address" required>
             </div>
-          </div>
-          <p class="r-text">I had a wonderful experience with JC Paving. Got quotes from 3 or 4 companies. JC was clearly the best choice.</p>
+            <div>
+              <label class="jc-flabel" for="est-service">Service Needed</label>
+              <select id="est-service" name="service_type" class="jc-field" required>
+                <option value="" selected disabled>Select a service</option>
+                <option>Driveway Paving</option>
+                <option>Parking Lot Paving</option>
+                <option>Grading &amp; Excavation</option>
+                <option>Concrete Flatwork</option>
+                <option>Repair &amp; Restoration</option>
+                <option>Financing Question</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="jc-flabel" for="est-details">Project Details</label>
+              <textarea id="est-details" name="project_details" class="jc-textarea" required></textarea>
+            </div>
+            <button type="submit" class="jc-cut inline-flex w-full items-center justify-center font-bold text-white transition hover:opacity-90" style="height:54px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;background:#16171a;border:none;cursor:pointer">Send Estimate Request</button>
+            <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;text-align:center;color:#807a6e">Reply same business day · No spam</p>
+            <p class="form-status" data-form-status aria-live="polite"></p>
+          </form>
+          <p class="mt-6 text-sm leading-6 text-zinc-600">Need the full estimate form? <a class="font-semibold text-construction-orange transition hover:text-construction-orange-dark" href="contact.html#estimate-form">Open the contact page</a>.</p>
         </div>
       </div>
-    </div>
-    <div class="reviews-nav">
-      <button class="r-arrow" id="reviewArrow">›</button>
-    </div>
-  </section>
+    </section>
 
-</div><!-- /.page -->
+  </main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="f-nav">
-    <a href="/" class="f-pill">Home</a>
-    <a href="#story" class="f-pill">About</a>
-    <a href="#gallery" class="f-pill">Projects</a>
-    <a href="#contact" class="f-pill">Contact</a>
-    <a href="#why" class="f-pill">Services</a>
-  </div>
-  <div class="f-inner">
-    <a href="mailto:projects@jcgradingpavingsolution.com" class="f-cta">Have a special Request? →</a>
-    <div class="f-contact">
-      <div class="f-addr">
-        <div class="f-addr-name">📍 JC Grading Paving Solution, Inc.</div>
-        Proudly serving the South Bay, Peninsula, Central Coast, and Central Valley communities of California<br/>
-        307 Orchard City Drive Floor 1, Suite #116 Campbell, CA 95008<br/>
-        CA Contractor's License #1118177
+  <!-- ── FOOTER ── -->
+  <footer class="border-t border-[#e7dfd2] bg-white text-[#16171a]">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.8fr_0.8fr] lg:px-8">
+      <div>
+        <img class="h-12 w-auto" src="https://github.com/user-attachments/assets/fc836631-3353-4a15-a1c0-7a277559a161" alt="JC Grading emblem" loading="lazy" decoding="async">
+        <p class="mt-6 max-w-sm text-sm leading-7 text-zinc-600">Strong foundations, clean finishes, and responsive service for South Bay residential and commercial properties.</p>
       </div>
-      <a href="tel:4087862330" class="f-link">T: (408)786-2330</a>
-      <a href="mailto:projects@jcgradingpavingsolution.com" class="f-link">projects@jcgradingpavingsolution.com</a>
+      <div>
+        <p class="jc-lbl mb-5">Contact</p>
+        <ul class="space-y-3 text-sm leading-7 text-zinc-600">
+          <li><a class="jc-footer-link" href="tel:4087862330">Call Our Team</a></li>
+          <li><a class="jc-footer-link" href="mailto:projects@jcgradingpavingsolution.com">Email Our Team</a></li>
+          <li><a class="jc-footer-link" href="contact.html#estimate-form">Open Contact Form</a></li>
+          <li><a class="jc-footer-link" href="https://www.instagram.com/jc_gradingpavingsolution/" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li><a class="jc-footer-link" href="https://www.linkedin.com/company/jc-grading-paving-solution-inc/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+          <li class="text-zinc-500">Licensed &amp; Insured</li>
+        </ul>
+      </div>
+      <div>
+        <p class="jc-lbl mb-5">Navigate</p>
+        <ul class="space-y-3 text-sm leading-7 text-zinc-600">
+          <li><a class="jc-footer-link" href="index.html">Home</a></li>
+          <li><a class="jc-footer-link" href="about.html">About</a></li>
+          <li><a class="jc-footer-link" href="services.html">Services</a></li>
+          <li><a class="jc-footer-link" href="#projects">Projects</a></li>
+          <li><a class="jc-footer-link" href="financing.html">Financing</a></li>
+          <li><a class="jc-footer-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="f-bottom">
-      <span class="f-copy">©jcgradingpavingsolution. All rights reserved.</span>
-      <a href="#" class="f-privacy">Privacy Policy</a>
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 border-t border-[#e7dfd2] px-4 py-8 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <p class="text-xs text-zinc-500">&copy; <span data-year></span> JC Grading Paving Solution, Inc. All rights reserved.</p>
+      <p class="text-xs text-zinc-500">Website built by <a class="font-medium text-zinc-600 transition hover:text-construction-orange" href="https://contractorarsenal.com" target="_blank" rel="noreferrer">Contractor Arsenal</a></p>
     </div>
-  </div>
-  <div class="f-brand">
-    <div class="f-brand-logo">
-      <img
-        src="https://cdn.prod.website-files.com/68d2f4276cc3a515a498462c/68d2f4a37879d52269a07ea3_cropped-logo200.jpg"
-        alt="JC Grading Logo"
-        onerror="this.style.display='none'; document.getElementById('fLogFallback').style.display='block';"
-      />
-      <span id="fLogFallback" style="display:none;" class="f-brand-fallback">JC<br/><span class="f-brand-sub">Grading Paving Solution</span></span>
-    </div>
-  </div>
-</footer>
-
-<script>
-// MENU
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const menuOverlay  = document.getElementById('menuOverlay');
-const menuClose    = document.getElementById('menuClose');
-const menuBackdrop = document.getElementById('menuBackdrop');
-
-function openMenu() {
-  menuOverlay.classList.add('open');
-  hamburgerBtn.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeMenu() {
-  menuOverlay.classList.remove('open');
-  hamburgerBtn.classList.remove('open');
-  document.body.style.overflow = '';
-}
-hamburgerBtn.addEventListener('click', openMenu);
-menuClose.addEventListener('click', closeMenu);
-menuBackdrop.addEventListener('click', closeMenu);
-
-// NAV SCROLL
-window.addEventListener('scroll', () => {
-  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 40);
-});
-
-// VIDEO
-const video = document.getElementById('siteVideo');
-const ppBtn = document.getElementById('ppBtn');
-if (video && ppBtn) {
-  ppBtn.addEventListener('click', () => {
-    if (video.paused) { video.play(); ppBtn.textContent = '⏸'; }
-    else { video.pause(); ppBtn.textContent = '▶'; }
-  });
-}
-
-// REVIEWS TOGGLE
-let rPage = 0;
-const p0 = document.getElementById('reviewPage0');
-const p1 = document.getElementById('reviewPage1');
-const rArrow = document.getElementById('reviewArrow');
-if (rArrow) {
-  rArrow.addEventListener('click', () => {
-    rPage = rPage === 0 ? 1 : 0;
-    p0.style.display = rPage === 0 ? '' : 'none';
-    p1.style.display = rPage === 1 ? '' : 'none';
-    rArrow.textContent = rPage === 0 ? '›' : '‹';
-  });
-}
-
-// REVEAL ON SCROLL
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-  });
-}, { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
+  </footer>
 
 </body>
 </html>

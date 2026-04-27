@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About JC Grading | South Bay Grading, Paving &amp; Concrete Contractor</title>
+  <meta name="description" content="Meet the team behind JC Grading. South Bay grading, paving, concrete, and excavation work built on 20+ years of field experience. Licensed &amp; insured.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://jcgradingpavingsolution.com/about.html">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="assets/js/tailwind-theme.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tailwind-pages.css">
+  <script defer src="assets/js/site.js"></script>
+  <style>
+    body { background: #f6f2ea !important; color: #16171a; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    header { background: rgba(255,255,255,0.96) !important; border-bottom-color: rgba(22,23,26,0.08) !important; }
+    header .logo-panel { background: transparent !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; }
+    #mobile-nav { background: #ffffff !important; border-top-color: rgba(22,23,26,0.08) !important; }
+
+    .jc-announce { background: #16171a; border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+    .jc-d {
+      font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: -0.02em !important;
+      line-height: 0.94 !important;
+    }
+
+    .jc-lbl {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #c25a2a;
+    }
+    .jc-lbl::before { content: ''; display: inline-block; width: 24px; height: 1px; background: #c25a2a; }
+
+    .jc-num {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #c25a2a;
+    }
+
+    .jc-cut { border-radius: 16px 0 16px 0 !important; }
+
+    .jc-stat {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .jc-svc {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(194,90,42,0.18);
+      background: #ffffff;
+      box-shadow: 0 18px 42px rgba(22,23,26,0.05);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      border-radius: 16px 0 16px 0;
+    }
+    .jc-svc::after {
+      content: '';
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 4px;
+      background: linear-gradient(90deg, #c25a2a 0%, #efb37a 100%);
+    }
+    .jc-svc:hover { background: #fff6ed; border-color: rgba(194,90,42,0.35); transform: translateY(-2px); }
+    .jc-arr { color: #c25a2a; transition: color 0.15s; font-size: 1rem; }
+
+    .jc-card {
+      background: #ffffff;
+      border: 1px solid rgba(194,90,42,0.16);
+      border-radius: 16px 0 16px 0;
+      box-shadow: 0 18px 42px rgba(22,23,26,0.05);
+    }
+
+    .jc-project {
+      overflow: hidden;
+      border: 1px solid rgba(22,23,26,0.08);
+      background: #ffffff;
+      box-shadow: 0 18px 42px rgba(22,23,26,0.05);
+      border-radius: 16px 0 16px 0;
+    }
+    .jc-project img { height: 240px; width: 100%; object-fit: cover; }
+
+    .jc-review {
+      border: 1px solid rgba(22,23,26,0.08);
+      background: #ffffff;
+      box-shadow: 0 18px 42px rgba(22,23,26,0.05);
+      border-radius: 16px 0 16px 0;
+    }
+    .jc-review.is-accent {
+      border-color: rgba(194,90,42,0.22);
+      background: linear-gradient(180deg, #fff7ef 0%, #ffffff 100%);
+    }
+
+    .jc-stamp {
+      border: 2px solid #c25a2a;
+      background: rgba(15,16,18,0.92);
+      padding: 20px 24px;
+      transform: rotate(-1.5deg);
+      max-width: 300px;
+    }
+
+    .jc-form-panel {
+      background: #ffffff;
+      color: #16171a;
+      padding: 40px;
+      box-shadow: 0 24px 60px rgba(22,23,26,0.12);
+      border-radius: 16px 0 16px 0;
+    }
+
+    .jc-field {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #d9d2c3;
+      padding: 0 14px;
+      height: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #16171a;
+      outline: none;
+      border-radius: 12px;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .jc-field:focus { border-color: #c25a2a; box-shadow: none; }
+    .jc-textarea {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #d9d2c3;
+      padding: 12px 14px;
+      height: 90px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #16171a;
+      outline: none;
+      resize: none;
+      border-radius: 12px;
+    }
+    .jc-textarea:focus { border-color: #c25a2a; }
+    .jc-flabel {
+      display: block;
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #807a6e;
+      margin-bottom: 8px;
+    }
+
+    .jc-footer-link { color: #5f5a52; transition: color 0.15s ease; }
+    .jc-footer-link:hover { color: #c25a2a; }
+
+    @media (max-width: 640px) {
+      .jc-hero-actions a { width: 100%; }
+      .jc-form-panel { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announce bar -->
+  <div class="jc-announce py-2 px-4">
+    <div class="mx-auto flex max-w-7xl items-center justify-between">
+      <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4)">&#9733; South Bay Grading &amp; Paving &middot; 20+ Yrs Field Experience</p>
+      <p class="hidden sm:block" style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Licensed &middot; Bonded &middot; Insured</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b backdrop-blur">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a class="logo-panel flex items-center gap-2.5" href="index.html" aria-label="JC Grading Paving Solution home">
+        <img class="h-9 w-auto" src="https://github.com/user-attachments/assets/fc836631-3353-4a15-a1c0-7a277559a161" alt="JC Grading emblem" decoding="async">
+        <span class="hidden text-sm font-semibold text-[#16171a] sm:inline" style="letter-spacing:0.02em">JC Grading</span>
+      </a>
+      <button class="jc-cut inline-flex h-10 w-10 items-center justify-center border border-zinc-200 text-[#16171a] md:hidden" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
+        <span class="material-symbols-outlined" style="font-size:20px" aria-hidden="true">menu</span>
+      </button>
+      <div class="hidden items-center gap-6 md:flex">
+        <nav class="flex items-center gap-6" aria-label="Primary">
+          <a class="text-sm font-medium text-zinc-600 transition hover:text-construction-orange" href="index.html">Home</a>
+          <a class="text-sm font-medium text-zinc-600 transition hover:text-construction-orange" href="about.html">About</a>
+          <a class="text-sm font-medium text-zinc-600 transition hover:text-construction-orange" href="services.html">Services</a>
+          <a class="text-sm font-medium text-zinc-600 transition hover:text-construction-orange" href="contact.html">Contact</a>
+        </nav>
+        <a class="jc-cut inline-flex items-center justify-center bg-construction-orange px-5 font-bold text-white transition hover:bg-construction-orange-dark" style="height:40px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase" href="contact.html#estimate-form">Request Free Estimate</a>
+      </div>
+    </div>
+    <div id="mobile-nav" class="hidden border-t" data-mobile-nav>
+      <nav class="mx-auto flex max-w-7xl flex-col px-4 py-4 sm:px-6" aria-label="Mobile">
+        <a class="border-b border-zinc-100 py-3 text-sm font-medium text-zinc-700" href="index.html">Home</a>
+        <a class="border-b border-zinc-100 py-3 text-sm font-medium text-zinc-700" href="about.html">About</a>
+        <a class="border-b border-zinc-100 py-3 text-sm font-medium text-zinc-700" href="services.html">Services</a>
+        <a class="py-3 text-sm font-medium text-zinc-700" href="contact.html">Contact</a>
+        <a class="jc-cut mt-4 inline-flex items-center justify-center bg-construction-orange font-bold text-white transition hover:bg-construction-orange-dark" style="height:48px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase" href="contact.html#estimate-form">Request Free Estimate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative flex min-h-[580px] items-center overflow-hidden bg-[#16171a]" aria-labelledby="about-hero-heading">
+      <div class="absolute inset-0" aria-hidden="true">
+        <img
+          class="h-full w-full object-cover opacity-30"
+          src="https://github.com/user-attachments/assets/9ae9df99-bfd7-442b-8fbb-198c0a3de39f"
+          alt=""
+          decoding="async"
+          fetchpriority="high"
+        >
+        <div class="absolute inset-0 bg-gradient-to-r from-[#16171a] via-[#16171a]/85 to-[#16171a]/20"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="jc-lbl" style="color:rgba(255,255,255,0.5)">
+            <span style="background:rgba(255,255,255,0.3);width:24px;height:1px;display:inline-block;flex-shrink:0"></span>
+            20+ Years Field Experience • Licensed • Bonded • Insured
+          </p>
+          <h1 id="about-hero-heading" class="jc-d mt-5 text-5xl text-white sm:text-6xl lg:text-7xl">
+            Built for clients tired of bad prep and poor communication
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-zinc-300" style="font-family:'Inter',sans-serif">
+            We fix what causes surfaces to fail. Not just cover it up. Not rushed. Not patched. Not guessed.
+          </p>
+          <div class="jc-hero-actions mt-8 flex flex-wrap gap-4">
+            <a class="jc-cut inline-flex items-center justify-center bg-[#c25a2a] px-8 font-bold text-white transition hover:bg-[#a84a22]" style="height:52px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Inter',sans-serif" href="contact.html#estimate-form">Get Your Free Estimate</a>
+            <a class="jc-cut inline-flex items-center justify-center border-2 border-white px-8 font-bold text-white transition hover:bg-white hover:text-[#16171a]" style="height:52px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Inter',sans-serif" href="services.html">View Services</a>
+          </div>
+          <p class="mt-4 text-sm text-zinc-400" style="font-family:'Inter',sans-serif">Free estimates. Same-week availability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="bg-[#16171a] py-10 border-b border-white/5" aria-labelledby="about-stats-heading">
+      <h2 id="about-stats-heading" class="sr-only">Company highlights</h2>
+      <div class="mx-auto grid max-w-7xl gap-4 px-4 sm:px-6 lg:px-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="jc-stat jc-cut px-6 py-8 text-center">
+          <p class="jc-d text-4xl text-white">20+</p>
+          <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-zinc-400" style="font-family:'JetBrains Mono',monospace">Years Experience</p>
+        </div>
+        <div class="jc-stat jc-cut px-6 py-8 text-center">
+          <p class="jc-d text-3xl text-white">Licensed</p>
+          <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-zinc-400" style="font-family:'JetBrains Mono',monospace">Bonded &amp; Insured</p>
+        </div>
+        <div class="jc-stat jc-cut px-6 py-8 text-center">
+          <p class="jc-d text-3xl text-white">Residential</p>
+          <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-zinc-400" style="font-family:'JetBrains Mono',monospace">&amp; Commercial Projects</p>
+        </div>
+        <div class="jc-stat jc-cut px-6 py-8 text-center">
+          <p class="jc-d text-3xl text-white">Same-Week</p>
+          <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-zinc-400" style="font-family:'JetBrains Mono',monospace">Estimates Available</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="bg-white py-20" aria-labelledby="about-story-heading">
+      <div class="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
+        <div class="relative">
+          <div class="absolute -left-4 -top-4 h-24 w-24 bg-[#c25a2a]/10" aria-hidden="true"></div>
+          <img
+            class="jc-cut relative h-135 w-full object-cover shadow-lg"
+            src="https://github.com/user-attachments/assets/5d4cb18d-bac9-45ba-bd55-10dd3fd85437"
+            alt="JC Grading crew member at work on a South Bay project"
+            loading="lazy"
+            decoding="async"
+          >
+          <div class="absolute bottom-6 right-6 jc-stamp text-white">
+            <p class="text-sm italic leading-7 text-zinc-200">"Do the prep right. Communicate clearly. Don't cut corners."</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center">
+          <p class="jc-lbl">Our Story</p>
+          <h2 id="about-story-heading" class="jc-d mt-5 text-4xl text-[#16171a] sm:text-5xl">
+            Why This Company Was Built Differently
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-zinc-700" style="font-family:'Inter',sans-serif">
+            Too many projects fail because of rushed prep and poor communication. Surfaces look fine at first. Then fail within a few years.
+          </p>
+          <p class="mt-4 text-base leading-8 text-zinc-500" style="font-family:'Inter',sans-serif">
+            Founded after more than two decades in the field, JC Grading was built for one reason: give clients the experience they actually deserve.
+          </p>
+          <p class="mt-4 text-base leading-8 text-zinc-500" style="font-family:'Inter',sans-serif">
+            Honest guidance. Reliable scheduling. Clean job sites. Work that holds up on South Bay residential and commercial properties long after the crew leaves.
+          </p>
+          <p class="mt-5 text-base leading-8 text-zinc-500" style="font-family:'Inter',sans-serif">
+            If you want to see how that standard shows up in the field, <a class="font-semibold text-[#c25a2a] transition hover:text-[#a84a22]" href="services.html">explore our services</a> or <a class="font-semibold text-[#c25a2a] transition hover:text-[#a84a22]" href="index.html#projects">view recent projects</a>.
+          </p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="jc-card p-6">
+              <p class="jc-d text-3xl text-[#c25a2a]">Clear</p>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-[#16171a]" style="font-family:'JetBrains Mono',monospace">Communication From Start to Finish</p>
+            </div>
+            <div class="jc-card p-6">
+              <p class="jc-d text-3xl text-[#c25a2a]">Built</p>
+              <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-[#16171a]" style="font-family:'JetBrains Mono',monospace">For Long-Term Surface Performance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Positioning Block -->
+    <section class="bg-[#16171a] py-16" aria-labelledby="positioning-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-base leading-8 text-zinc-400" style="font-family:'Inter',sans-serif">Most contractors focus on the surface.</p>
+          <p id="positioning-heading" class="jc-d mt-4 text-[#c25a2a]" style="font-size:clamp(2rem,4.5vw,3.5rem)">We focus on what's underneath.</p>
+          <p class="mt-5 text-base leading-8 text-zinc-400" style="font-family:'Inter',sans-serif">Because that's what determines whether the job lasts or fails.</p>
+          <p class="mt-3 text-base leading-8 text-zinc-400" style="font-family:'Inter',sans-serif">Prep, drainage, and base work. That's what makes the difference.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose JC -->
+    <section class="bg-[#16171a] py-20" aria-labelledby="about-mission-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14 max-w-3xl">
+          <p class="jc-lbl" style="color:rgba(255,255,255,0.4)">
+            <span style="background:rgba(255,255,255,0.25);width:24px;height:1px;display:inline-block;flex-shrink:0"></span>
+            Why Clients Choose JC Grading
+          </p>
+          <h2 id="about-mission-heading" class="jc-d mt-5 text-4xl text-white sm:text-5xl">
+            What separates work that lasts from work that fails early.
+          </h2>
+          <p class="mt-6 text-base leading-8 text-zinc-400" style="font-family:'Inter',sans-serif">
+            Four things we focus on before, during, and after every project.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div class="jc-card p-8">
+            <span class="material-symbols-outlined text-[#c25a2a] mb-4 block" style="font-size:32px" aria-hidden="true">schedule</span>
+            <p class="jc-num mb-3">01</p>
+            <h3 class="jc-d text-xl text-[#16171a]">We Show Up and Stay On Schedule</h3>
+            <p class="mt-3 text-sm leading-7 text-zinc-500" style="font-family:'Inter',sans-serif">Reliable timelines and clear updates so clients aren't left guessing what happens next.</p>
+          </div>
+          <div class="jc-card p-8">
+            <span class="material-symbols-outlined text-[#c25a2a] mb-4 block" style="font-size:32px" aria-hidden="true">foundation</span>
+            <p class="jc-num mb-3">02</p>
+            <h3 class="jc-d text-xl text-[#16171a]">Prep Done Right the First Time</h3>
+            <p class="mt-3 text-sm leading-7 text-zinc-500" style="font-family:'Inter',sans-serif">Grading, drainage, and base work handled correctly before anything gets poured or paved.</p>
+          </div>
+          <div class="jc-card p-8">
+            <span class="material-symbols-outlined text-[#c25a2a] mb-4 block" style="font-size:32px" aria-hidden="true">cleaning_services</span>
+            <p class="jc-num mb-3">03</p>
+            <h3 class="jc-d text-xl text-[#16171a]">Clean, Professional Job Sites</h3>
+            <p class="mt-3 text-sm leading-7 text-zinc-500" style="font-family:'Inter',sans-serif">Professional crews, organized work areas, and a job site that doesn't become a problem for neighbors.</p>
+          </div>
+          <div class="jc-card p-8">
+            <span class="material-symbols-outlined text-[#c25a2a] mb-4 block" style="font-size:32px" aria-hidden="true">verified</span>
+            <p class="jc-num mb-3">04</p>
+            <h3 class="jc-d text-xl text-[#16171a]">Work Built to Last Under Real Use</h3>
+            <p class="mt-3 text-sm leading-7 text-zinc-500" style="font-family:'Inter',sans-serif">Paving, grading, and concrete built to hold up. Not just look good on the day of installation.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-[1fr_0.5fr]">
+          <div class="relative overflow-hidden jc-cut" style="min-height:280px">
+            <img
+              class="h-full w-full object-cover"
+              style="min-height:280px"
+              src="https://github.com/user-attachments/assets/5caae82f-53e5-4480-8fa5-eb27205256bb"
+              alt="JC Grading team at a community event"
+              loading="lazy"
+              decoding="async"
+            >
+            <div class="absolute inset-0 bg-linear-to-t from-[#16171a] to-transparent opacity-80" aria-hidden="true"></div>
+            <div class="absolute bottom-8 left-8 right-8 text-white">
+              <h3 class="jc-d text-2xl">Prep That Protects Your Investment</h3>
+              <p class="mt-3 max-w-xl text-sm leading-7 text-zinc-300" style="font-family:'Inter',sans-serif">Good-looking work starts below the surface. We focus on grading, drainage, compaction, and finish quality that help prevent early failure.</p>
+            </div>
+          </div>
+          <div class="jc-cut bg-[#c25a2a] p-10 text-white flex flex-col justify-between">
+            <span class="material-symbols-outlined mb-6 block" style="font-size:40px" aria-hidden="true">handshake</span>
+            <div>
+              <h3 class="jc-d text-2xl text-white">Reliable Communication</h3>
+              <p class="mt-4 text-sm leading-7 text-white/80" style="font-family:'Inter',sans-serif">
+                Clients should never have to guess what is happening next. Straightforward updates and honest answers are part of the work.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="bg-white py-20" aria-labelledby="about-leadership-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14 max-w-3xl">
+          <p class="jc-lbl">Leadership</p>
+          <h2 id="about-leadership-heading" class="jc-d mt-5 text-4xl text-[#16171a] sm:text-5xl">
+            The People Behind the Work
+          </h2>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-2">
+          <article class="jc-card p-10">
+            <p class="jc-num">Founder</p>
+            <h3 class="jc-d mt-3 text-3xl text-[#16171a]">Jose Centeno</h3>
+            <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-zinc-400" style="font-family:'JetBrains Mono',monospace">Founder &amp; Chief Executive Officer</p>
+            <p class="mt-4 text-sm font-semibold text-[#c25a2a]" style="font-family:'Inter',sans-serif">20+ years hands-on experience in grading, paving, and concrete work</p>
+            <p class="mt-5 text-base leading-8 text-zinc-500" style="font-family:'Inter',sans-serif">
+              Jose saw the same problems repeated across years in the field: rushed prep, poor communication, work that looked fine until it didn't.
+            </p>
+            <p class="mt-4 text-base leading-8 text-zinc-500" style="font-family:'Inter',sans-serif">
+              He built JC Grading to fix that. His focus: prep first, honest scope, and work that holds up.
+            </p>
+          </article>
+
+          <article class="jc-card p-10">
+            <p class="jc-num">Operations</p>
+            <h3 class="jc-d mt-3 text-3xl text-[#16171a]">Kenzie Thomas, J.D.</h3>
+            <p class="mt-2 text-xs font-semibold uppercase tracking-widest text-zinc-400" style="font-family:'JetBrains Mono',monospace">Chief Operations Officer</p>
+            <p class="mt-6 text-base leading-8 text-zinc-500" style="font-family:'Inter',sans-serif">
+              Kenzie keeps estimates, scheduling, permits, and client communication organized from first call to final walkthrough.
+            </p>
+            <p class="mt-4 text-base leading-8 text-zinc-500" style="font-family:'Inter',sans-serif">
+              Clients get clear updates and a smoother process because the back end is structured from the start.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Boost -->
+    <section class="bg-[#f6f2ea] py-14 border-b border-[#e7dfd2]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 text-center sm:grid-cols-3">
+          <div>
+            <p class="jc-d text-5xl text-[#c25a2a]">4.9</p>
+            <p class="mt-3 text-xs font-semibold uppercase tracking-widest text-zinc-500" style="font-family:'JetBrains Mono',monospace">Average Google Rating</p>
+          </div>
+          <div>
+            <p class="jc-d text-5xl text-[#c25a2a]">100+</p>
+            <p class="mt-3 text-xs font-semibold uppercase tracking-widest text-zinc-500" style="font-family:'JetBrains Mono',monospace">Completed Projects</p>
+          </div>
+          <div>
+            <p class="jc-d text-4xl text-[#c25a2a]">South Bay</p>
+            <p class="mt-3 text-xs font-semibold uppercase tracking-widest text-zinc-500" style="font-family:'JetBrains Mono',monospace">&amp; Peninsula Service Area</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="bg-[#16171a] py-20" aria-labelledby="about-reviews-heading">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-14 max-w-3xl">
+          <p class="jc-lbl" style="color:rgba(255,255,255,0.4)">
+            <span style="background:rgba(255,255,255,0.25);width:24px;height:1px;display:inline-block;flex-shrink:0"></span>
+            Client Reviews
+          </p>
+          <h2 id="about-reviews-heading" class="jc-d mt-5 text-4xl text-white sm:text-5xl">
+            Trusted by homeowners and businesses across the South Bay
+          </h2>
+          <p class="mt-6 text-base leading-8 text-zinc-400" style="font-family:'Inter',sans-serif">
+            Homeowners and businesses across the South Bay trust JC Grading for grading, paving, and concrete work that holds up. These reviews reflect what we focus on every job: proper prep, clear communication, and reliable results.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="jc-review p-8">
+            <p class="jc-num mb-4">Google Review</p>
+            <p class="text-base italic leading-8 text-zinc-600" style="font-family:'Inter',sans-serif">"Their crews were knowledgeable and professional. They were able to bring my vision to life."</p>
+            <p class="mt-6 text-sm font-bold text-[#16171a]" style="font-family:'Inter',sans-serif">Mackenzie J.</p>
+          </article>
+          <article class="jc-review is-accent p-8">
+            <p class="jc-num mb-4">Google Review</p>
+            <p class="text-base italic leading-8 text-zinc-600" style="font-family:'Inter',sans-serif">"They did quality work and kept to our schedule. I also appreciated the ease of handling the business side."</p>
+            <p class="mt-6 text-sm font-bold text-[#16171a]" style="font-family:'Inter',sans-serif">Tyler T.</p>
+          </article>
+          <article class="jc-review p-8">
+            <p class="jc-num mb-4">Google Review</p>
+            <p class="text-base italic leading-8 text-zinc-600" style="font-family:'Inter',sans-serif">"Their attention to detail and commitment to delivering high-quality work were evident. I highly recommend them."</p>
+            <p class="mt-6 text-sm font-bold text-[#16171a]" style="font-family:'Inter',sans-serif">Kenneth L.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-[#c25a2a] py-20 text-white" aria-labelledby="about-cta-heading">
+      <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <div class="max-w-3xl">
+          <p class="jc-lbl" style="color:rgba(255,255,255,0.6)">
+            <span style="background:rgba(255,255,255,0.4);width:24px;height:1px;display:inline-block;flex-shrink:0"></span>
+            Next Step
+          </p>
+          <h2 id="about-cta-heading" class="jc-d mt-5 text-4xl text-white sm:text-5xl">
+            Get Your Project Done Right the First Time.
+          </h2>
+          <p class="mt-6 text-lg leading-8 text-white/80" style="font-family:'Inter',sans-serif">
+            Tell us what you need and we'll give you a clear next step. No guessing, no runaround.
+          </p>
+        </div>
+        <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap lg:max-w-95 lg:justify-end">
+          <a class="jc-cut inline-flex items-center justify-center bg-[#16171a] px-10 font-bold text-white transition hover:bg-black" style="height:52px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Inter',sans-serif" href="contact.html#estimate-form">Request Your Estimate</a>
+          <a class="jc-cut inline-flex items-center justify-center border-2 border-white px-10 font-bold text-white transition hover:bg-white hover:text-[#16171a]" style="height:52px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Inter',sans-serif" href="services.html">View Services</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-[#e7dfd2] bg-white">
+    <div class="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
+      <div>
+        <img class="h-10 w-auto" src="https://github.com/user-attachments/assets/fc836631-3353-4a15-a1c0-7a277559a161" alt="JC Grading emblem" loading="lazy" decoding="async">
+        <p class="mt-5 max-w-sm text-sm leading-7 text-zinc-500">South Bay grading, paving, and concrete contractor. Licensed &amp; insured. Serving residential and commercial properties across the South Bay and Peninsula.</p>
+        <p class="mt-4 text-xs text-zinc-400" style="font-family:'JetBrains Mono',monospace;letter-spacing:0.12em;text-transform:uppercase">CA Licensed &middot; Bonded &middot; Insured</p>
+      </div>
+      <div>
+        <p class="mb-5 text-xs font-bold uppercase tracking-widest text-[#c25a2a]" style="font-family:'JetBrains Mono',monospace">Contact</p>
+        <ul class="space-y-3 text-sm leading-7 text-zinc-500">
+          <li><a class="jc-footer-link" href="tel:4087862330">Call Our Team</a></li>
+          <li><a class="jc-footer-link" href="mailto:projects@jcgradingpavingsolution.com">Email Our Team</a></li>
+          <li><a class="jc-footer-link" href="contact.html#estimate-form">Request Free Estimate</a></li>
+          <li><a class="jc-footer-link" href="https://www.instagram.com/jc_gradingpavingsolution/" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li><a class="jc-footer-link" href="https://www.linkedin.com/company/jc-grading-paving-solution-inc/" target="_blank" rel="noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="mb-5 text-xs font-bold uppercase tracking-widest text-[#c25a2a]" style="font-family:'JetBrains Mono',monospace">Pages</p>
+        <ul class="space-y-3 text-sm leading-7 text-zinc-500">
+          <li><a class="jc-footer-link" href="index.html">Home</a></li>
+          <li><a class="jc-footer-link" href="about.html">About</a></li>
+          <li><a class="jc-footer-link" href="services.html">Services</a></li>
+          <li><a class="jc-footer-link" href="financing.html">Financing</a></li>
+          <li><a class="jc-footer-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-[#e7dfd2] px-4 py-6 sm:px-6">
+      <div class="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+        <p class="text-xs text-zinc-400">&copy; <span data-year></span> JC Grading Paving Solution, Inc. All rights reserved.</p>
+        <p class="text-xs text-zinc-400">Website by <a class="font-medium text-zinc-500 transition hover:text-[#c25a2a]" href="https://contractorarsenal.com" target="_blank" rel="noreferrer">Contractor Arsenal</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
