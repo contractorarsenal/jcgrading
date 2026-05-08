@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/tailwind-pages.css">
-  <script defer src="assets/js/site.js"></script>
+  <link rel="stylesheet" href="assets/css/tailwind-pages.css?v=web3forms-confirmation-2">
+  <script defer src="assets/js/site.js?v=web3forms-confirmation-2"></script>
   <style>
     body { background: #f6f2ea !important; color: #16171a; }
 
@@ -571,8 +571,8 @@
           <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c25a2a">Quick Request</p>
           <h2 id="quick-form-heading" class="jc-d mt-3 mb-5" style="font-size:clamp(1.8rem,3.5vw,2.6rem);color:#16171a">Start your estimate.</h2>
           <p class="mb-8 max-w-2xl text-base leading-7 text-zinc-600">Looking for grading, paving, concrete, drainage, or excavation work in the South Bay? Share your project details and we'll follow up with a clear next step.</p>
-          <form class="web3form grid gap-5" method="POST" data-recipient-email="projects@jcgradingpavingsolution.com" data-success-message="Thanks for reaching out. We'll follow up shortly.">
-            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <form class="web3form grid gap-5" action="https://api.web3forms.com/submit" method="POST" data-success-message="Thanks for reaching out to JC Grading. We'll follow up shortly.">
+            <input type="hidden" name="access_key" value="28827061-49d0-4755-a3db-cade000952df">
             <input type="hidden" name="subject" value="New estimate request from JC Grading homepage">
             <input type="hidden" name="from_name" value="JC Grading Homepage">
             <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">

@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/tailwind-pages.css">
-  <script defer src="assets/js/site.js"></script>
+  <link rel="stylesheet" href="assets/css/tailwind-pages.css?v=web3forms-confirmation-2">
+  <script defer src="assets/js/site.js?v=web3forms-confirmation-2"></script>
   <style>
     body { background: #f6f2ea !important; color: #16171a; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
 
@@ -190,8 +190,8 @@
           <h2 class="jc-d mt-4 text-[#16171a]" style="font-size:clamp(1.8rem,3.5vw,2.6rem)">Tell us what you need. We'll take it from there.</h2>
           <p class="mt-4 text-base leading-8 text-zinc-500">Looking for grading, paving, concrete, drainage, or excavation work in the South Bay? Share your project details and we'll follow up with a clear next step within one business day.</p>
 
-          <form class="web3form mt-10 space-y-6" method="POST">
-            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <form class="web3form mt-10 space-y-6" action="https://api.web3forms.com/submit" method="POST" data-success-message="Thanks for reaching out to JC Grading. We'll follow up shortly.">
+            <input type="hidden" name="access_key" value="28827061-49d0-4755-a3db-cade000952df">
             <input type="hidden" name="subject" value="New estimate request from JC Grading website">
             <input type="hidden" name="from_name" value="JC Grading Website">
             <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">

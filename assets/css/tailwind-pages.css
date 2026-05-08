@@ -361,3 +361,102 @@ textarea:focus-visible {
   background: #fef2f2;
   color: #b91c1c;
 }
+
+.form-success-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(15, 16, 18, 0.68);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.form-success-modal.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.form-success-dialog {
+  width: min(100%, 430px);
+  border: 1px solid rgba(194, 90, 42, 0.24);
+  border-radius: 18px 0 18px 0;
+  background: #ffffff;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+  color: #16171a;
+  padding: 2rem;
+  text-align: center;
+  transform: translateY(10px) scale(0.98);
+  transition: transform 0.18s ease;
+}
+
+.form-success-modal.is-visible .form-success-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.form-success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.form-success-icon .material-symbols-outlined {
+  font-size: 34px;
+  font-variation-settings: "FILL" 1, "wght" 600;
+}
+
+.form-success-kicker {
+  margin-top: 1rem;
+  color: #c25a2a;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.form-success-title {
+  margin-top: 0.55rem;
+  font-family: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  font-weight: 800;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.form-success-copy {
+  margin-top: 0.85rem;
+  color: #5f5a52;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.form-success-close {
+  margin-top: 1.35rem;
+  min-height: 48px;
+  width: 100%;
+  border: 0;
+  border-radius: 14px 0 14px 0;
+  background: #c25a2a;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.form-success-close:hover,
+.form-success-close:focus {
+  background: #a84a22;
+  outline: none;
+}

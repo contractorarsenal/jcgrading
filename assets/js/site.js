@@ -48,33 +48,83 @@ document.querySelectorAll("[data-year]").forEach((node) => {
   node.textContent = new Date().getFullYear();
 });
 
-const buildMailtoEstimateUrl = (formData, recipient) => {
-  const labelMap = {
-    name: "Name",
-    phone: "Phone",
-    email: "Email",
-    project_address: "Project city or address",
-    service_type: "Service needed",
-    project_details: "Project details"
-  };
+let successModalTimeout;
 
-  const ignoredFields = new Set(["access_key", "botcheck", "subject", "from_name"]);
-  const lines = ["New estimate request from the JC Grading website", ""];
+const closeFormSuccessMessage = () => {
+  const modal = document.querySelector("[data-form-success-modal]");
 
-  formData.forEach((value, key) => {
-    if (!value || ignoredFields.has(key)) {
-      return;
+  if (!modal) {
+    return;
+  }
+
+  window.clearTimeout(successModalTimeout);
+  modal.classList.remove("is-visible");
+  modal.setAttribute("aria-hidden", "true");
+};
+
+const getFormSuccessModal = () => {
+  let modal = document.querySelector("[data-form-success-modal]");
+
+  if (modal) {
+    return modal;
+  }
+
+  modal = document.createElement("div");
+  modal.className = "form-success-modal";
+  modal.setAttribute("data-form-success-modal", "");
+  modal.setAttribute("aria-hidden", "true");
+  modal.innerHTML = `
+    <div class="form-success-dialog" role="status" aria-live="polite">
+      <div class="form-success-icon" aria-hidden="true">
+        <span class="material-symbols-outlined">check_circle</span>
+      </div>
+      <p class="form-success-kicker">Request Submitted</p>
+      <p class="form-success-title">Thanks, we got it.</p>
+      <p class="form-success-copy" data-form-success-copy></p>
+      <button class="form-success-close" type="button" data-form-success-close>Close</button>
+    </div>
+  `;
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeFormSuccessMessage();
     }
-
-    const label = labelMap[key] || key;
-    lines.push(`${label}: ${value}`);
   });
 
-  const subject = String(formData.get("subject") || "New estimate request from JC Grading");
-  const body = encodeURIComponent(lines.join("\n"));
+  modal
+    .querySelector("[data-form-success-close]")
+    .addEventListener("click", closeFormSuccessMessage);
 
-  return `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${body}`;
+  document.body.appendChild(modal);
+
+  return modal;
 };
+
+const showFormSuccessMessage = (message) => {
+  const modal = getFormSuccessModal();
+  const copy = modal.querySelector("[data-form-success-copy]");
+  const closeButton = modal.querySelector("[data-form-success-close]");
+
+  if (copy) {
+    copy.textContent = message;
+  }
+
+  window.clearTimeout(successModalTimeout);
+  modal.classList.add("is-visible");
+  modal.setAttribute("aria-hidden", "false");
+
+  if (closeButton) {
+    closeButton.focus({ preventScroll: true });
+  }
+
+  successModalTimeout = window.setTimeout(closeFormSuccessMessage, 9000);
+};
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeFormSuccessMessage();
+  }
+});
 
 const initWeb3Forms = () => {
   const forms = document.querySelectorAll(".web3form");
@@ -107,36 +157,17 @@ const initWeb3Forms = () => {
         formData.append("from_name", "JC Grading Website");
       }
 
-      const accessKey = String(formData.get("access_key") || "").trim();
-      const hasConfiguredAccessKey =
-        accessKey.length > 0 && accessKey !== "YOUR_WEB3FORMS_ACCESS_KEY";
-
-      if (!hasConfiguredAccessKey) {
-        const recipientEmail =
-          form.dataset.recipientEmail || "projects@jcgradingpavingsolution.com";
-
-        status.textContent = "Opening your email app with your request details...";
-        status.className = "form-status is-visible is-loading";
-
-        window.location.href = buildMailtoEstimateUrl(formData, recipientEmail);
-
-        status.textContent =
-          "If your email app did not open, use the Call or Email button on this page.";
-        status.className = "form-status is-visible is-success";
-        submitButton.disabled = false;
-        submitButton.style.opacity = "1";
-        submitButton.innerHTML = originalButtonText;
-        return;
-      }
-
       try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            Accept: "application/json"
-          },
-          body: formData
-        });
+        const response = await fetch(
+          form.getAttribute("action") || "https://api.web3forms.com/submit",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json"
+            },
+            body: formData
+          }
+        );
 
         const result = await response.json();
 
@@ -144,11 +175,14 @@ const initWeb3Forms = () => {
           throw new Error(result.message || "Submission failed.");
         }
 
-        form.reset();
-        status.textContent =
+        const successMessage =
           form.dataset.successMessage ||
           "Thank you for submitting. We'll be in contact shortly.";
+
+        form.reset();
+        status.textContent = successMessage;
         status.className = "form-status is-visible is-success";
+        showFormSuccessMessage(successMessage);
       } catch (error) {
         status.textContent =
           "We couldn't submit your request right now. Please use the Call or Email button and try again shortly.";
