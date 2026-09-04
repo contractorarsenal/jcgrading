@@ -1,0 +1,34 @@
+# Files and directories that must never be uploaded as public static assets.
+# Syntax matches .gitignore. See wrangler.jsonc (assets.directory = ".").
+
+# Dependency / build tooling (Cloudflare runs `npm clean-install`, which
+# recreates node_modules — including the ~150MB+ workerd binary — inside
+# the asset directory before `wrangler deploy` runs; it must be excluded
+# here or the deploy fails against Cloudflare's 25 MiB per-asset limit)
+node_modules/
+
+# Wrangler's own local build/deploy state (recreated on every run — it
+# lives inside the assets directory since assets.directory is ".", so
+# without this it would try to upload its own temp worker bundle)
+.wrangler/
+
+# Tailwind build input/config — source for assets/css/tailwind.build.css,
+# not something a visitor should ever fetch
+build/
+tailwind.config.js
+
+# Package management
+package.json
+package-lock.json
+
+# Version control / editor / OS metadata
+.git/
+.gitignore
+.DS_Store
+
+# Deployment configuration itself
+wrangler.jsonc
+.assetsignore
+
+# Internal project instructions — not a public page
+CLAUDE.md
