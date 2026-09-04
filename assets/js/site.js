@@ -94,6 +94,40 @@ document.addEventListener("click", (event) => {
   if (estimateLink) {
     jcAnalytics.gaEvent("estimate_cta_click", { page_location: window.location.pathname });
   }
+
+  const stormworksContactLink = event.target.closest("[data-stormworks-contact]");
+  if (stormworksContactLink) {
+    jcAnalytics.gaEvent("stormworks_contact_click", { page_location: window.location.pathname });
+    return;
+  }
+
+  const stormworksLink = event.target.closest("[data-stormworks-click]");
+  if (stormworksLink) {
+    jcAnalytics.gaEvent("stormworks_click", { page_location: window.location.pathname });
+  }
+});
+
+/* ── Structured address fields: friendly inline validation messages ──
+   Uses the native constraint-validation API (setCustomValidity) so the
+   browser's own inline field UI shows our wording instead of a generic
+   default — no alert()/confirm() involved. */
+document.querySelectorAll("[data-address-error]").forEach((field) => {
+  const message = field.getAttribute("data-address-error");
+
+  const applyMessage = () => {
+    // A non-empty custom validity message makes validity.valid permanently
+    // false (via the customError flag) until it's cleared — so clear it
+    // first, then re-check the field's actual (native) constraints.
+    field.setCustomValidity("");
+    if (!field.validity.valid) {
+      field.setCustomValidity(message);
+    }
+  };
+
+  applyMessage();
+  field.addEventListener("input", applyMessage);
+  field.addEventListener("change", applyMessage);
+  field.addEventListener("invalid", applyMessage);
 });
 
 /* ── Reduced motion: hero background video ── */
@@ -266,6 +300,23 @@ const initWeb3Forms = () => {
           status.className = "form-status is-visible is-error";
           return;
         }
+      }
+
+      // Build a single combined address string for compatibility with the
+      // existing Web3Forms email/downstream automation, from the
+      // structured street/unit/city/state/zip fields (if present on this
+      // form). Structured fields remain the source of truth; this is a
+      // derived convenience value only.
+      const addressFullField = form.querySelector('[name="project_address_full"]');
+      if (addressFullField) {
+        const street = form.querySelector("[data-address-street]")?.value.trim();
+        const unit = form.querySelector("[data-address-unit]")?.value.trim();
+        const city = form.querySelector("[data-address-city]")?.value.trim();
+        const state = form.querySelector("[data-address-state]")?.value.trim();
+        const zip = form.querySelector("[data-address-zip]")?.value.trim();
+        const line1 = [street, unit].filter(Boolean).join(", ");
+        const line2 = [city, [state, zip].filter(Boolean).join(" ")].filter(Boolean).join(", ");
+        addressFullField.value = [line1, line2].filter(Boolean).join(", ");
       }
 
       status.textContent = "Submitting your request...";
