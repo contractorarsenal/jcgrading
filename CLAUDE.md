@@ -624,3 +624,143 @@ Before finishing, verify:
 
 Do not mark complete until every section supports clarity, SEO, trust, and conversion.
 ```
+
+---
+
+# PROJECT CONTEXT AND REMOTE DEVELOPMENT RULES
+
+Added 2026-10-15 from read-only discovery. The repository is the source of truth. Anything marked UNVERIFIED must be confirmed before it is repeated on the site. The SEO and conversion rules above still apply to every copy change.
+
+## Business
+
+- Business name: JC Grading Paving Solution, Inc. Site brand: "JC Grading".
+- Phone: (408) 656-8639 (tel link). Email: projects@jcgradingpavingsolution.com (mailto link).
+- Services (from page copy and meta): grading, excavation, asphalt paving, concrete flatwork, repair, drainage.
+- StormWorks: a commercial winter drainage preparedness and storm-response program. Page text says enrollment is open for the 2026/2027 season.
+- Financing page references Acorn Finance, a third party.
+- Service area: South Bay and Peninsula (services page meta). Contact page lists cities including Campbell, San Jose, Santa Clara, Sunnyvale, Cupertino, and Los Gatos.
+- Customers: homeowners and commercial properties.
+- Production domain: https://jcgradingpavingsolution.com
+
+## Unverified business claims
+
+Do not add new claims of this kind. Confirm these before changing or repeating them:
+
+- Experience: "20+ Years" (home hero stat, About hero) conflicts with "15+ years hands-on experience" (About body).
+- Job count: "1,800 Jobs" (home stat).
+- Credentials: "Licensed · Bonded · Insured" appears across several pages.
+- Response time: "24 Hours" (home stat) and "Real response within 24 hours" (process and CTA copy) conflict with "one business day" (contact page and home body).
+- StormWorks 2026/2027 enrollment window.
+- Acorn Finance arrangement.
+- "Free estimates" policy.
+
+## Site architecture
+
+- Static HTML, no framework or router. Root pages: index.html (home; quick estimate form at #quick-form; projects at #projects), about.html, services.html, stormworks.html, financing.html, contact.html (estimate form at #estimate-form), privacy.html.
+- Every page has a main#main-content target for the skip link.
+- Images are in assets/img/ (logo, OG images, hero, projects). Icons are in assets/icons/.
+- The home hero video is streamed from a public third-party R2 URL (pub-7fc74b38….r2.dev). This is an external asset dependency.
+
+## Styling and Tailwind build
+
+- Tailwind CSS 3.4 (package.json specifies ^3.4.19), compiled to a committed file.
+- Config: tailwind.config.js. Content scan covers only ./*.html. Plugins: @tailwindcss/forms and @tailwindcss/container-queries. Custom brand colors. Spacing key "135" is defined explicitly.
+- Input: build/tailwind-input.css. Output: assets/css/tailwind.build.css (minified, committed).
+- Build command: `npm run build:css`. It requires `npm install` first. node_modules is not in the repo and was not installed as of 2026-10-15.
+- Also committed: assets/css/tailwind-pages.css and assets/css/jc-components.css. The build command does not generate them. Their source is not verified.
+- Classes used only in JS or non-HTML files are not picked up by the Tailwind scan.
+
+## JavaScript
+
+- assets/js/site.js: hero video playback, the accessible form-success dialog, and Web3Forms submission via fetch. It resets the form on success and shows an error state on failure.
+- assets/js/address-autocomplete.js: Google Places autocomplete for address fields. Loads the Maps JavaScript API only when a key is set.
+- assets/js/maps-config.js: apiKey is empty, so autocomplete is INACTIVE. Manual address entry still works. Any key must be browser-restricted.
+
+## Forms and lead delivery
+
+- Two Web3Forms forms, both posting to https://api.web3forms.com/submit:
+  - index.html, form name `quick_estimate`
+  - contact.html, form name `contact_estimate`
+- Fields: name, phone, email, project_street_address, project_city, project_state, project_zip, project_unit, service_type, project_details. Contact adds project_timeline.
+- The access key is in a hidden input in the form markup. Never copy it into docs, commits, or chat.
+- Where leads are delivered is set in the Web3Forms dashboard. UNVERIFIED.
+- Live submissions have not been tested. Do not submit forms to test them, because that creates real leads. Test only with explicit authorization.
+
+## Analytics and tracking
+
+- GA4 measurement ID G-L9NZBY1RC6 (gtag in the head of each page).
+- Microsoft Clarity project ID yct3vyvxio (each page).
+- No Meta Pixel and no Google Tag Manager container were found.
+- Do not add, remove, or change tracking scripts or IDs without explicit authorization.
+
+## SEO and structured data
+
+- Each page has a unique title, meta description, and canonical URL on https://jcgradingpavingsolution.com.
+- JSON-LD: GeneralContractor on all pages. Service and FAQPage on services and stormworks. WebSite on index. BreadcrumbList on inner pages.
+- sitemap.xml lists 7 URLs. robots.txt allows all crawlers and points to the sitemap. Add new pages to the sitemap.
+- Footer credit "Website by contractorarsenal.com" appears on the pages checked (about, contact, financing).
+
+## Hosting and deployment
+
+- Cloudflare Workers with Static Assets. wrangler.jsonc: name `jcgrading`, compatibility_date 2026-09-03, assets directory ".", observability enabled.
+- Manual deploy script: `npm run deploy`, which runs `wrangler deploy`. Not run during discovery.
+- Automatic deploy: a check run named "Workers Builds: jcgrading" succeeded on main commits. A push to main will probably deploy to production. UNVERIFIED in the Cloudflare dashboard.
+- Also present on main: a "Cloudflare Pages" check run and GitHub Pages deployment records. Which platform serves production is UNVERIFIED.
+- .assetsignore excludes node_modules, .wrangler, build/, tailwind.config.js, package.json, package-lock.json, wrangler.jsonc, .assetsignore, .gitignore, .git, .DS_Store, and CLAUDE.md.
+- Live check: CLAUDE.md, package.json, wrangler.jsonc, build/tailwind-input.css, tailwind.config.js, and .assetsignore all return 404. Add any new internal folder or file type to .assetsignore before publishing it.
+
+## GitHub and Git
+
+- Repository: https://github.com/contractorarsenal/jcgrading (public). Default branch: main. Origin: https://github.com/contractorarsenal/jcgrading.git.
+- Local repository initialized and attached to origin/main at commit 00739fc on 2026-10-15.
+- Repo-local identity: Jay Duran <259208228+contractorarsenal@users.noreply.github.com>. Global Git config was not changed.
+- .DS_Store is in .git/info/exclude.
+- The repository is public. Everything committed, including history, is visible. Never commit secrets, keys, tokens, or .env files.
+- Open PR #4 (branch cloudflare/workers-autoconfig, opened 2026-05-08) adds older wrangler.jsonc and .gitignore content. Do not merge it without approval.
+- Use a feature branch for nontrivial work.
+
+## Remote development commands
+
+- **"Check website"**: read-only. Allowed: git status, log, diff, and show; reading files; read-only gh API calls; GET requests to the live site. Do not edit files, run builds, install dependencies, commit, push, or submit forms.
+- **"Update website"**: implement the requested change in the working tree, preferably on a feature branch. Run the relevant checks: CSS build if Tailwind inputs changed, link and anchor checks, and a visual check if practical. Report the result and the diff. Do not commit or push unless asked.
+- **"Push live"**: review every pending change. Verify the destination (origin, branch, and the Workers Builds trigger). Run the relevant checks. Push only after explicit authorization for that push. After pushing, check the live site and report what changed.
+- **"Status"**: report the current branch, `git status --short`, the latest local commit, and ahead/behind against origin/main. A fetch is allowed for this. Then list outstanding issues from the section below.
+- **"Refresh context"**: review commits since 00739fc and the files they change. Read only those files and the docs they touch. Do not scan the whole repository.
+
+## Tailwind rules
+
+If a change touches Tailwind classes, the Tailwind config, or CSS source:
+
+1. Identify the build command in package.json (`npm run build:css`).
+2. Install dependencies only if necessary and authorized.
+3. Run `npm run build:css`.
+4. Confirm assets/css/tailwind.build.css reflects the change.
+5. Include the compiled CSS in the same commit as the source change.
+6. Verify the layout when practical.
+
+Never push a styling change that needs compiled CSS regenerated before the build has been verified.
+
+## Production and GitHub safety
+
+- Treat every push to main as a potential production deployment.
+- Never force-push. Never discard uncommitted changes. Never reset main destructively.
+- Never merge PR #4 without approval.
+- Do not change Cloudflare Workers, DNS, or hosting settings without authorization.
+- Verify the target deployment before pushing.
+- Never claim the live site changed without checking it.
+- Remote Control sessions follow the same rules. A request to push, deploy, or change settings needs explicit authorization in that session. Never print tokens or credentials into a session. `gh auth status` output must stay masked.
+
+## Outstanding issues (do not auto-fix)
+
+- PR #4 contains older Cloudflare configuration.
+- Main may deploy automatically through Workers Builds.
+- Compiled Tailwind CSS must stay in sync with its source.
+- Experience claims conflict: 15+ vs 20+ years.
+- Response-time promises differ across pages: 24 hours vs one business day.
+- License, insurance, and job-count claims need verification.
+- Maps autocomplete is inactive (apiKey is empty).
+- Live form submissions have not been tested.
+- Lead destination (Web3Forms dashboard) is unverified.
+- Hero video depends on a third-party R2 URL.
+- Production platform (Workers vs Pages) is unverified.
+- Public repository: anything committed is visible.
