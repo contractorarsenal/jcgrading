@@ -81,7 +81,7 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const financingLink = event.target.closest('a[href^="financing.html"]');
+  const financingLink = event.target.closest('a[href^="financing"]');
   if (financingLink && !financingApplyLink) {
     jcAnalytics.gaEvent("financing_click", { page_location: window.location.pathname });
     jcAnalytics.clarityEvent("financing_clicked");
