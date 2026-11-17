@@ -1,23 +1,30 @@
 /* Single-page estimate section: homepage and contact page.
    Uses JC's tokens: orange #c25a2a, ink #16171a, warm white, concrete gray #f4f4f4. */
 
+/* Constrained, centred layout. The compiled Tailwind file has no max-w-6xl or
+   mx-auto for this wrapper, so the width is set here, scoped to the estimate
+   component (homepage and contact page). */
 .cf-layout {
+  box-sizing: border-box;
+  width: min(100% - 48px, 1180px);
+  margin-inline: auto;
   display: grid;
   gap: 40px;
-  align-items: start;
+  align-items: center;
 }
 
 @media (min-width: 900px) {
   .cf-layout {
-    grid-template-columns: 1fr 1.1fr;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: 56px;
+    align-items: start;
   }
 }
 
 .cf-info {
   min-width: 0;
   display: grid;
-  gap: 24px;
+  gap: 28px;
 }
 
 .cf-eyebrow {
@@ -150,7 +157,7 @@
 
 @media (min-width: 640px) {
   .cf-card {
-    padding: 44px 44px 40px;
+    padding: 40px;
   }
 }
 
@@ -288,4 +295,16 @@
   .cf-submit {
     transition: none !important;
   }
+}
+
+/* Contact hero: confirmed issue. The hero was about 563px tall at 1440px and the
+   headline reached 80px, so the form started near the bottom of a laptop viewport.
+   Reduce vertical padding and cap the headline. Nothing else in the hero changes. */
+section[aria-labelledby="contact-hero-heading"] .z-10 {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+#contact-hero-heading {
+  font-size: clamp(2.8rem, 5vw, 4.5rem) !important;
 }
