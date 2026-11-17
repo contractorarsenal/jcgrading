@@ -49,11 +49,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/tailwind.build.css">
   <link rel="stylesheet" href="assets/css/jc-components.css">
-  <link rel="stylesheet" href="assets/css/estimate-form.css?v=2">
+  <link rel="stylesheet" href="assets/css/contact-form.css?v=2">
   <link rel="stylesheet" href="assets/css/tailwind-pages.css?v=web3forms-confirmation-2">
   <script defer src="assets/js/maps-config.js"></script>
   <script defer src="assets/js/site.js?v=web3forms-confirmation-2"></script>
-  <script defer src="assets/js/estimate-form.js"></script>
+  <script defer src="assets/js/contact-form.js?v=2"></script>
   <script defer src="assets/js/address-autocomplete.js"></script>
 
   <script type="application/ld+json">
@@ -664,81 +664,60 @@
     </section>
 
     <!-- ── QUICK REQUEST ── -->
-    <section class="bg-white py-28" id="quick-form" aria-labelledby="quick-form-heading">
-      <div class="mx-auto max-w-[860px] px-4 sm:px-6 lg:px-8">
-        <div class="jc-form-panel">
-          <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c25a2a">Quick Request</p>
-          <h2 id="quick-form-heading" class="jc-d mt-3 mb-5" style="font-size:clamp(1.8rem,3.5vw,2.6rem);color:#16171a">Start your estimate.</h2>
-          <p class="mb-8 max-w-2xl text-base leading-7 text-zinc-600">Looking for grading, paving, concrete, drainage, or excavation work in the South Bay? Tell us the service and project address, and we'll follow up with a clear next step.</p>
-          <form class="web3form ef" data-multistep data-form-name="quick_estimate" action="https://api.web3forms.com/submit" method="POST" data-success-message="Thanks for reaching out to JC Grading. We'll follow up shortly.">
-            <input type="hidden" name="access_key" value="28827061-49d0-4755-a3db-cade000952df">
-            <input type="hidden" name="subject" value="New estimate request from JC Grading homepage">
-            <input type="hidden" name="from_name" value="JC Grading Homepage">
-            <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
-            <div class="ef-progress" aria-hidden="true"><span class="ef-seg" data-progress-seg></span><span class="ef-seg" data-progress-seg></span><span class="ef-seg" data-progress-seg></span></div>
-            <p class="ef-count" data-step-count aria-live="polite">Step 1 of 3</p>
-
-            <fieldset class="ef-step" data-step>
-              <legend class="ef-legend" tabindex="-1">What service do you need?</legend>
-              <div class="ef-options">
-              <div class="ef-option">
-                <input type="radio" id="est-svc-0" name="service_type" value="Asphalt Paving" required>
-                <label for="est-svc-0">Asphalt Paving<span>Driveways, parking lots, private roads</span></label>
-              </div>
-              <div class="ef-option">
-                <input type="radio" id="est-svc-1" name="service_type" value="Asphalt Sealcoating">
-                <label for="est-svc-1">Asphalt Sealcoating<span>Protection for asphalt in good condition</span></label>
-              </div>
-              <div class="ef-option">
-                <input type="radio" id="est-svc-2" name="service_type" value="Asphalt Patching">
-                <label for="est-svc-2">Asphalt Patching<span>Potholes, cracks, and failed patches</span></label>
-              </div>
-              <div class="ef-option">
-                <input type="radio" id="est-svc-3" name="service_type" value="Other / Not Sure">
-                <label for="est-svc-3">Other / Not Sure<span>Grading, concrete, drainage, StormWorks, or not sure yet</span></label>
-              </div>
-              </div>
-              <p class="ef-error" data-error-for="service_type"></p>
-            </fieldset>
-
-            <fieldset class="ef-step" data-step>
-              <legend class="ef-legend" tabindex="-1">Where is your project?</legend>
-              <div class="ef-field">
-                <label class="ef-label" for="est-street">Project street address</label>
-                <input class="ef-input" id="est-street" name="project_street_address" type="text" autocomplete="street-address" placeholder="123 Main Street" required aria-describedby="est-street-error">
-                <p class="ef-hint">Street address and number. We confirm the rest on the phone.</p>
-                <p class="ef-error" id="est-street-error" data-error-for="project_street_address"></p>
-              </div>
-            </fieldset>
-
-            <fieldset class="ef-step" data-step>
-              <legend class="ef-legend" tabindex="-1">How can we contact you?</legend>
-              <div class="ef-field">
-                <label class="ef-label" for="est-name">Full name</label>
-                <input class="ef-input" id="est-name" name="name" type="text" autocomplete="name" required aria-describedby="est-name-error">
-                <p class="ef-error" id="est-name-error" data-error-for="name"></p>
-              </div>
-              <div class="ef-field">
-                <label class="ef-label" for="est-phone">Phone</label>
-                <input class="ef-input" id="est-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(408) 000-0000" required aria-describedby="est-phone-error">
-                <p class="ef-error" id="est-phone-error" data-error-for="phone"></p>
-              </div>
-              <div class="ef-field">
-                <label class="ef-label" for="est-email">Email</label>
-                <input class="ef-input" id="est-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="est-email-error">
-                <p class="ef-error" id="est-email-error" data-error-for="email"></p>
-              </div>
-              <div class="h-captcha" data-captcha="true"></div>
-            </fieldset>
-
-            <div class="ef-nav">
-              <button type="button" class="ef-btn ef-btn-secondary" data-back hidden>Back</button>
-              <button type="submit" class="ef-btn ef-btn-primary" data-next>Continue</button>
+    <section class="bg-white py-24" id="quick-form" aria-labelledby="quick-form-heading">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 cf-layout">
+        <div class="cf-info">
+          <p class="cf-eyebrow">Contact JC Grading</p>
+          <h2 id="quick-form-heading" class="cf-info-title">Let's talk about your project.</h2>
+          <p class="cf-info-text">Grading, asphalt paving, sealcoating, and patching across the South Bay and Peninsula. We check the base before anything is quoted.</p>
+          <a class="cf-call" href="tel:+14086568639" data-phone-link>Call Now</a>
+          <dl class="cf-details">
+            <div><dt class="cf-label">Email</dt><dd><a href="mailto:projects@jcgradingpavingsolution.com">projects@jcgradingpavingsolution.com</a></dd></div>
+            <div><dt class="cf-label">Service area</dt><dd>South Bay and Peninsula</dd></div>
+          </dl>
+          <div class="cf-next">
+            <p class="cf-eyebrow">What happens next</p>
+            <ol class="cf-steps">
+              <li>We review your request.</li>
+              <li>We follow up by phone or email.</li>
+              <li>We walk the site before anything is quoted.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="cf-card">
+          <p class="cf-eyebrow">Project Inquiry</p>
+          <h3 class="cf-card-title">Get a Free Estimate</h3>
+          <p class="cf-card-text">Tell us where your project is located and how to reach you. Our team will follow up.</p>
+          <form class="web3form cf-form" data-form-name="quick_estimate" action="https://api.web3forms.com/submit" method="POST" data-success-message="Thanks! Your request has been sent. Our team will be in touch." data-error-message="We couldn't send your request. Please try again or call us at (408) 656-8639." data-success-modal="off" novalidate>
+          <input type="hidden" name="access_key" value="28827061-49d0-4755-a3db-cade000952df">
+              <input type="hidden" name="subject" value="New estimate request from JC Grading homepage">
+              <input type="hidden" name="from_name" value="JC Grading Homepage">
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
+          <div class="cf-grid">
+            <div class="cf-field">
+              <label class="cf-label" for="home-name">Full Name</label>
+              <input class="cf-input" id="home-name" name="name" type="text" autocomplete="name" required aria-describedby="home-name-error">
+                <p class="cf-error" id="home-name-error" data-error-for="name"></p>
             </div>
-            <p class="form-status" data-form-status aria-live="polite"></p>
-            <p class="ef-note">Takes 30 seconds. Free estimates.</p>
-          </form>
-          <p class="mt-6 text-sm leading-6 text-zinc-600">Need the full estimate form? <a class="font-semibold text-construction-orange transition hover:text-construction-orange-dark" href="contact#estimate-form">Open the contact page</a>.</p>
+            <div class="cf-field">
+              <label class="cf-label" for="home-email">Email Address</label>
+              <input class="cf-input" id="home-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="home-email-error">
+                <p class="cf-error" id="home-email-error" data-error-for="email"></p>
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="home-phone">Phone Number</label>
+              <input class="cf-input" id="home-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(408) 000-0000" required aria-describedby="home-phone-error">
+                <p class="cf-error" id="home-phone-error" data-error-for="phone"></p>
+            </div>
+            <div class="cf-field">
+              <label class="cf-label" for="home-address">Project Address</label>
+              <input class="cf-input" id="home-address" name="project_street_address" type="text" autocomplete="street-address" placeholder="123 Main Street" required aria-describedby="home-address-error">
+                <p class="cf-error" id="home-address-error" data-error-for="project_street_address"></p>
+            </div>
+          </div>
+          <button type="submit" class="cf-submit" data-submit>REQUEST MY ESTIMATE</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
         </div>
       </div>
     </section>

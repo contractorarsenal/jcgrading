@@ -372,9 +372,12 @@ const initWeb3Forms = () => {
         form.reset();
         status.textContent = successMessage;
         status.className = "form-status is-visible is-success";
-        showFormSuccessMessage(successMessage);
+        if (form.dataset.successModal !== "off") {
+          showFormSuccessMessage(successMessage);
+        }
       } catch (error) {
         status.textContent =
+          form.dataset.errorMessage ||
           "We couldn't submit your request right now. Please use the Call or Email button and try again shortly.";
         status.className = "form-status is-visible is-error";
         jcAnalytics.gaEvent("form_error", {

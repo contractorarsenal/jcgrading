@@ -628,40 +628,47 @@ Do not mark complete until every section supports clarity, SEO, trust, and conve
 
 ---
 
-# ESTIMATE FORM REQUIREMENTS (owner-approved, 2026-11-16)
+# ESTIMATE FORM REQUIREMENTS (owner decision, 2026-11-17)
 
-These decisions come from the owner meeting on 2026-11-16 and override older form guidance above, including the FORM RULES section that asks for project details. Do not restore the longer form.
+These decisions replace the three-step form, the captcha rules, and the earlier estimate form guidance in this file and in sprint notes. Do not restore the multi-step form, a progress indicator, a popup, or a visible captcha.
 
-## Fields (only these)
+## Form
 
-- Step 1: service needed. Options: Asphalt Paving, Asphalt Sealcoating, Asphalt Patching, Other / Not Sure.
-- Step 2: project street address.
-- Step 3: full name, phone, email.
+- Single page, four fields only: Full Name, Email Address, Phone Number, Project Address. All are required.
+- No service selector, budget, timeline, description, message, file upload, unit, city, state, ZIP, or other questions.
+- The whole form is visible at once. Desktop shows Full Name and Email in one row and Phone and Project Address in the next. Mobile stacks all four fields.
+- Copy: eyebrow PROJECT INQUIRY, heading GET A FREE ESTIMATE, description "Tell us where your project is located and how to reach you. Our team will follow up.", button REQUEST MY ESTIMATE.
+- Success: "Thanks! Your request has been sent. Our team will be in touch."
+- Error: "We couldn't send your request. Please try again or call us at (408) 656-8639."
+- Do not add response-time promises.
 
-Do not add budget, timeline, project details, photo upload, marketing source, or city/state/ZIP fields. Do not add a required long description.
+## Layout
 
-## Behaviour
+- Homepage (`#quick-form`) and contact page (`#estimate-form`) use the same component: `.cf-layout`, `.cf-info`, `.cf-card`.
+- Left column: intro, a full-width CALL NOW button, email, service area, and "What Happens Next". Right column: the form card.
+- Code lives in `assets/js/contact-form.js` and `assets/css/contact-form.css`. Do not add a second form handler.
 
-- Three steps with a progress indicator, Back button, inline validation, loading state, duplicate-submit prevention, and success and error states.
-- Build from `assets/js/estimate-form.js` and `assets/css/estimate-form.css`. Keep the same form component on the homepage, the contact page, and any new service page that shows the form.
-- Do not change the Web3Forms `access_key`, the endpoint, the honeypot (`botcheck`), or the notification recipients without owner approval.
+## Phone numbers
 
-## Spam protection (must remain)
+- Do not show phone numbers as visible text. Use a CALL NOW or "Call Now" button with a `tel:` link. The number appears only in `tel:` links, structured data, and the error message copy above.
 
-- The `<div class="h-captcha" data-captcha="true"></div>` container stays inside the final step of every estimate form. The Web3Forms client script renders hCaptcha into it. Removing it removes working spam protection.
-- Do not add a different captcha provider or other third-party scripts without owner approval.
+## Spam protection
+
+- Keep the Web3Forms honeypot field `botcheck`, client-side validation, and duplicate-submit protection.
+- Do not add a visible captcha, reCAPTCHA, Turnstile, a captcha container, or any captcha script. This is an explicit owner decision.
+- If Web3Forms requires a captcha because of account settings, report that dependency. Do not bypass server-side protection.
+
+## Routing and secrets
+
+- Keep the existing Web3Forms `access_key` and notification recipients. Do not put the access key anywhere else, and do not add secrets to client code.
+- Do not route submissions to `projects@jcgradingpaving.com` until that domain is verified as operational.
 
 ## Analytics
 
-- Events: `estimate_cta_click`, `form_start`, `form_step`, `form_submit_attempt`, `form_error`, and `generate_lead` only after confirmed success.
-- Never send names, phone numbers, emails, addresses, or message text to GA4 or Clarity. Only step numbers, service choice, and error type are allowed.
-
-## Copy rules for this form
-
-- Do not state a response time that the owner has not confirmed. Current copy that says "within one business day" or "within 24 hours" is pending owner confirmation.
-- Do not describe photo uploads, project details, or budget questions in any copy, FAQ, or schema.
+- Events: `estimate_cta_click`, `form_start`, `form_error`, `generate_lead`, `phone_click`.
+- `generate_lead` fires only after Web3Forms confirms success. It carries `form_name` and `form_id` with the same value.
+- Never send names, email addresses, phone numbers, or street addresses to GA4 or Clarity.
 
 ## Service pages
 
-- `asphalt-paving.html`, `asphalt-sealcoating.html`, and `asphalt-patching.html` are drafts. Keep them `noindex, nofollow` and out of the sitemap and navigation until the owner approves the content and photos.
-- Do not add fake project photos, unverified claims, or city names without a confirmed job location.
+- The three asphalt service pages are a separate release (Release 2). They are not part of this form and must not be indexed or published until the owner approves their content and photos.
