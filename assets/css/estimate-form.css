@@ -248,3 +248,17 @@
     transition: none !important;
   }
 }
+
+/* Narrow phones: the hCaptcha widget is a fixed 302px wide. Scale it to fit
+   the form column on screens below 380px. Desktop and tablet are unchanged. */
+@media (max-width: 379px) {
+  .ef .h-captcha {
+    height: 48px;
+    overflow: hidden;
+  }
+
+  .ef .h-captcha iframe {
+    transform: scale(0.63);
+    transform-origin: 0 0;
+  }
+}

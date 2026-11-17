@@ -181,6 +181,7 @@
     };
     form.addEventListener("input", markStarted);
     form.addEventListener("change", markStarted);
+    form.addEventListener("focusin", markStarted);
 
     /* Continue / submit. The submit button is the only submit control, so Enter
        in a field also arrives here as a click. Earlier steps never submit. */

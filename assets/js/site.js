@@ -363,6 +363,7 @@ const initWeb3Forms = () => {
         // No personal data (name/email/phone/address/details) is sent.
         jcAnalytics.gaEvent("generate_lead", {
           form_name: form.dataset.formName || "estimate_form",
+          form_id: form.dataset.formName || "estimate_form",
           page_location: window.location.pathname,
           service_interest: formData.get("service_type") || undefined
         });
