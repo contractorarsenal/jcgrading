@@ -282,7 +282,7 @@ const initWeb3Forms = () => {
   forms.forEach((form) => {
     const status = form.querySelector("[data-form-status]");
     const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton ? submitButton.innerHTML : "";
+    let originalButtonText = submitButton ? submitButton.innerHTML : "";
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -323,6 +323,7 @@ const initWeb3Forms = () => {
       status.className = "form-status is-visible is-loading";
       submitButton.disabled = true;
       submitButton.style.opacity = "0.7";
+      originalButtonText = submitButton.innerHTML;
       submitButton.innerHTML = "Submitting...";
 
       const formData = new FormData(form);
@@ -375,6 +376,11 @@ const initWeb3Forms = () => {
         status.textContent =
           "We couldn't submit your request right now. Please use the Call or Email button and try again shortly.";
         status.className = "form-status is-visible is-error";
+        jcAnalytics.gaEvent("form_error", {
+          form_id: form.dataset.formName || "estimate_form",
+          error_type: "submission_failed",
+          page_location: window.location.pathname
+        });
       } finally {
         submitButton.disabled = false;
         submitButton.style.opacity = "1";
