@@ -74,6 +74,14 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  // Email click: event name and page only. The address is never sent as a parameter,
+  // and this is not a lead (no generate_lead, no Clarity lead signal).
+  const emailLink = event.target.closest('a[href^="mailto:"]');
+  if (emailLink) {
+    jcAnalytics.gaEvent("email_click", { page_location: window.location.pathname });
+    return;
+  }
+
   const financingApplyLink = event.target.closest("[data-financing-apply]");
   if (financingApplyLink) {
     jcAnalytics.gaEvent("financing_apply_click", { page_location: window.location.pathname });
