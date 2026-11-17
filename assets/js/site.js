@@ -279,6 +279,27 @@ const showFormSuccessMessage = (message) => {
 const initWeb3Forms = () => {
   const forms = document.querySelectorAll(".web3form");
 
+  // Reads the Web3Forms JSON body without throwing on non-JSON responses.
+  const readWeb3FormsResult = async (response) => {
+    let payload = null;
+    try {
+      payload = await response.json();
+    } catch (parseError) {
+      payload = null;
+    }
+    const body = payload && payload.body && typeof payload.body === "object" ? payload.body : {};
+    const detail = String(body.message || (payload && payload.message) || "");
+    return { success: Boolean(payload && payload.success === true), detail };
+  };
+
+  // Masks anything that looks like an email address or a phone or street number
+  // before the detail is written to the console.
+  const sanitizeWeb3FormsDetail = (text) =>
+    String(text || "")
+      .replace(/[^\s@]+@[^\s@]+/g, "[email]")
+      .replace(/\d{3,}/g, "[number]")
+      .slice(0, 160);
+
   forms.forEach((form) => {
     const status = form.querySelector("[data-form-status]");
     const submitButton = form.querySelector('button[type="submit"]');
@@ -348,10 +369,15 @@ const initWeb3Forms = () => {
           }
         );
 
-        const result = await response.json();
+        // Web3Forms documents success at the top level, and the description of a
+        // 400 under body.message. A non-JSON body is treated as a failure.
+        const { success, detail } = await readWeb3FormsResult(response);
 
-        if (!response.ok || !result.success) {
-          throw new Error(result.message || "Submission failed.");
+        if (!response.ok || !success) {
+          const failure = new Error("Submission failed.");
+          failure.httpStatus = response.status;
+          failure.detail = detail;
+          throw failure;
         }
 
         const successMessage =
@@ -376,6 +402,12 @@ const initWeb3Forms = () => {
           showFormSuccessMessage(successMessage);
         }
       } catch (error) {
+        const httpStatus = (error && error.httpStatus) || 0;
+        // Development diagnostic: HTTP status and Web3Forms' description only.
+        // The payload, names, emails, phone numbers and addresses are never logged.
+        console.warn(
+          `[estimate-form] submission failed: HTTP ${httpStatus}. ${sanitizeWeb3FormsDetail(error && error.detail)}`
+        );
         status.textContent =
           form.dataset.errorMessage ||
           "We couldn't submit your request right now. Please use the Call or Email button and try again shortly.";
@@ -383,6 +415,7 @@ const initWeb3Forms = () => {
         jcAnalytics.gaEvent("form_error", {
           form_id: form.dataset.formName || "estimate_form",
           error_type: "submission_failed",
+          http_status: httpStatus,
           page_location: window.location.pathname
         });
       } finally {
