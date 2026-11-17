@@ -190,6 +190,10 @@
       .jc-hero-actions a { width: 100%; }
     }
   </style>
+  <style>
+    /* Narrow phones (320px): the hCaptcha frame is 302px wide. Scale it to fit. */
+     (max-width: 340px) { .h-captcha { transform: scale(0.85); transform-origin: 0 0; } }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
