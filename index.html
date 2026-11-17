@@ -669,7 +669,7 @@
         <div class="jc-form-panel">
           <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c25a2a">Quick Request</p>
           <h2 id="quick-form-heading" class="jc-d mt-3 mb-5" style="font-size:clamp(1.8rem,3.5vw,2.6rem);color:#16171a">Start your estimate.</h2>
-          <p class="mb-8 max-w-2xl text-base leading-7 text-zinc-600">Looking for grading, paving, concrete, drainage, or excavation work in the South Bay? Share your project details and we'll follow up with a clear next step.</p>
+          <p class="mb-8 max-w-2xl text-base leading-7 text-zinc-600">Looking for grading, paving, concrete, drainage, or excavation work in the South Bay? Tell us the service and project address, and we'll follow up with a clear next step.</p>
           <form class="web3form ef" data-multistep data-form-name="quick_estimate" action="https://api.web3forms.com/submit" method="POST" data-success-message="Thanks for reaching out to JC Grading. We'll follow up shortly.">
             <input type="hidden" name="access_key" value="28827061-49d0-4755-a3db-cade000952df">
             <input type="hidden" name="subject" value="New estimate request from JC Grading homepage">
@@ -728,6 +728,7 @@
                 <input class="ef-input" id="est-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="est-email-error">
                 <p class="ef-error" id="est-email-error" data-error-for="email"></p>
               </div>
+              <div class="h-captcha" data-captcha="true"></div>
             </fieldset>
 
             <div class="ef-nav">

@@ -624,3 +624,44 @@ Before finishing, verify:
 
 Do not mark complete until every section supports clarity, SEO, trust, and conversion.
 ```
+
+
+---
+
+# ESTIMATE FORM REQUIREMENTS (owner-approved, 2026-11-16)
+
+These decisions come from the owner meeting on 2026-11-16 and override older form guidance above, including the FORM RULES section that asks for project details. Do not restore the longer form.
+
+## Fields (only these)
+
+- Step 1: service needed. Options: Asphalt Paving, Asphalt Sealcoating, Asphalt Patching, Other / Not Sure.
+- Step 2: project street address.
+- Step 3: full name, phone, email.
+
+Do not add budget, timeline, project details, photo upload, marketing source, or city/state/ZIP fields. Do not add a required long description.
+
+## Behaviour
+
+- Three steps with a progress indicator, Back button, inline validation, loading state, duplicate-submit prevention, and success and error states.
+- Build from `assets/js/estimate-form.js` and `assets/css/estimate-form.css`. Keep the same form component on the homepage, the contact page, and any new service page that shows the form.
+- Do not change the Web3Forms `access_key`, the endpoint, the honeypot (`botcheck`), or the notification recipients without owner approval.
+
+## Spam protection (must remain)
+
+- The `<div class="h-captcha" data-captcha="true"></div>` container stays inside the final step of every estimate form. The Web3Forms client script renders hCaptcha into it. Removing it removes working spam protection.
+- Do not add a different captcha provider or other third-party scripts without owner approval.
+
+## Analytics
+
+- Events: `estimate_cta_click`, `form_start`, `form_step`, `form_submit_attempt`, `form_error`, and `generate_lead` only after confirmed success.
+- Never send names, phone numbers, emails, addresses, or message text to GA4 or Clarity. Only step numbers, service choice, and error type are allowed.
+
+## Copy rules for this form
+
+- Do not state a response time that the owner has not confirmed. Current copy that says "within one business day" or "within 24 hours" is pending owner confirmation.
+- Do not describe photo uploads, project details, or budget questions in any copy, FAQ, or schema.
+
+## Service pages
+
+- `asphalt-paving.html`, `asphalt-sealcoating.html`, and `asphalt-patching.html` are drafts. Keep them `noindex, nofollow` and out of the sitemap and navigation until the owner approves the content and photos.
+- Do not add fake project photos, unverified claims, or city names without a confirmed job location.
