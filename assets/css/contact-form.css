@@ -75,7 +75,36 @@
   background: #c25a2a;
 }
 
+/* Contact actions: CALL NOW and EMAIL US, stacked full width. */
+.cf-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.cf-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 60px;
+  background: transparent;
+  border: 1px solid #16171a;
+  color: #16171a;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.cf-email:hover {
+  background: #16171a;
+  color: #fff;
+}
+
 .cf-call:focus-visible,
+.cf-email:focus-visible,
 .cf-submit:focus-visible,
 .cf-input:focus-visible,
 .cf-details a:focus-visible {
