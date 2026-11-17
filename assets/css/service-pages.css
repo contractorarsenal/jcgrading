@@ -151,3 +151,17 @@
   letter-spacing: 0.14em; text-transform: uppercase; color: #c25a2a; margin-bottom: 10px;
 }
 .sp-owner-note ul { margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.7; }
+
+/* Hero fact strip: text-first hero, no empty image column. */
+.sp-facts { display: grid; gap: 0; border-top: 1px solid rgba(22,23,26,0.14); }
+.sp-facts > div { padding: 18px 0; border-bottom: 1px solid rgba(22,23,26,0.14); }
+.sp-fact-k { margin: 0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #c25a2a; }
+.sp-fact-v { margin: 6px 0 0; font-size: 16px; line-height: 1.5; color: #16171a; }
+@media (min-width: 900px) { .sp-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; } .sp-facts > div { border-bottom: 0; border-top: 0; padding: 0; } }
+
+/* Spacing and button stacking fixes (QA round). */
+.sp-list { margin-top: 24px; }
+@media (max-width: 640px) {
+  .sp-links { display: grid; gap: 12px; }
+  .sp-links a { width: 100%; box-sizing: border-box; justify-content: center; text-align: center; }
+}
