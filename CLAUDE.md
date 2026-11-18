@@ -624,3 +624,54 @@ Before finishing, verify:
 
 Do not mark complete until every section supports clarity, SEO, trust, and conversion.
 ```
+
+
+---
+
+# ESTIMATE FORM REQUIREMENTS (owner decision, 2026-11-17)
+
+These decisions replace the three-step form, the captcha rules, and the earlier estimate form guidance in this file and in sprint notes. Do not restore the multi-step form, a progress indicator, a popup, or a visible captcha.
+
+## Form
+
+- Single page, four fields only: Full Name, Email Address, Phone Number, Project Address. All are required.
+- No service selector, budget, timeline, description, message, file upload, unit, city, state, ZIP, or other questions.
+- The whole form is visible at once. Desktop shows Full Name and Email in one row and Phone and Project Address in the next. Mobile stacks all four fields.
+- Copy: eyebrow PROJECT INQUIRY, heading GET A FREE ESTIMATE, description "Tell us where your project is located and how to reach you. Our team will follow up.", button REQUEST MY ESTIMATE.
+- Success: "Thanks! Your request has been sent. Our team will be in touch."
+- Error: "We couldn't send your request. Please try again or call us at (408) 656-8639."
+- Do not add response-time promises.
+
+## Layout
+
+- Homepage (`#quick-form`) and contact page (`#estimate-form`) use the same component: `.cf-layout`, `.cf-info`, `.cf-card`.
+- Left column: intro, a full-width CALL NOW button, email, service area, and "What Happens Next". Right column: the form card.
+- Code lives in `assets/js/contact-form.js` and `assets/css/contact-form.css`. Do not add a second form handler.
+
+## Phone numbers
+
+- Do not show phone numbers as visible text. Use a CALL NOW or "Call Now" button with a `tel:` link. The number appears only in `tel:` links, structured data, and the error message copy above.
+
+## Spam protection
+
+- Keep the Web3Forms honeypot field `botcheck`, client-side validation, and duplicate-submit protection.
+- Do not add a visible captcha, reCAPTCHA, Turnstile, a captcha container, or any captcha script. This is an explicit owner decision.
+- If Web3Forms requires a captcha because of account settings, report that dependency. Do not bypass server-side protection.
+
+## Routing and secrets
+
+- Web3Forms form: "JC", access key beginning `35b150e6` (owner decision, 2026-11-17). Both estimate forms (homepage `#quick-form`, contact `#estimate-form`) use this key and it is a public client-side key. The previous key (beginning `28827061`) is retired and must not appear in the codebase.
+- Only `assets/js/site.js` posts to `https://api.web3forms.com/submit`. Do not load `web3forms.com/client/script.js`: it caused a duplicate POST.
+- Notification recipients and the allowed-domains list are managed in the Web3Forms dashboard, not in code. Do not change them from code. Leads must reach the owner-approved recipient, so confirm the recipient with the owner before changing the key or the routing again.
+- Do not add secrets to client code.
+- Do not route submissions to `projects@jcgradingpaving.com` until that domain is verified as operational.
+
+## Analytics
+
+- Events: `estimate_cta_click`, `form_start`, `form_error`, `generate_lead`, `phone_click`.
+- `generate_lead` fires only after Web3Forms confirms success. It carries `form_name` and `form_id` with the same value.
+- Never send names, email addresses, phone numbers, or street addresses to GA4 or Clarity.
+
+## Service pages
+
+- The three asphalt service pages are a separate release (Release 2). They are not part of this form and must not be indexed or published until the owner approves their content and photos.
