@@ -74,6 +74,14 @@ document.addEventListener("click", (event) => {
     return;
   }
 
+  // Email click: event name and page only. The address is never sent as a parameter,
+  // and this is not a lead (no generate_lead, no Clarity lead signal).
+  const emailLink = event.target.closest('a[href^="mailto:"]');
+  if (emailLink) {
+    jcAnalytics.gaEvent("email_click", { page_location: window.location.pathname });
+    return;
+  }
+
   const financingApplyLink = event.target.closest("[data-financing-apply]");
   if (financingApplyLink) {
     jcAnalytics.gaEvent("financing_apply_click", { page_location: window.location.pathname });
@@ -81,7 +89,7 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const financingLink = event.target.closest('a[href^="financing.html"]');
+  const financingLink = event.target.closest('a[href^="financing"]');
   if (financingLink && !financingApplyLink) {
     jcAnalytics.gaEvent("financing_click", { page_location: window.location.pathname });
     jcAnalytics.clarityEvent("financing_clicked");
@@ -279,10 +287,31 @@ const showFormSuccessMessage = (message) => {
 const initWeb3Forms = () => {
   const forms = document.querySelectorAll(".web3form");
 
+  // Reads the Web3Forms JSON body without throwing on non-JSON responses.
+  const readWeb3FormsResult = async (response) => {
+    let payload = null;
+    try {
+      payload = await response.json();
+    } catch (parseError) {
+      payload = null;
+    }
+    const body = payload && payload.body && typeof payload.body === "object" ? payload.body : {};
+    const detail = String(body.message || (payload && payload.message) || "");
+    return { success: Boolean(payload && payload.success === true), detail };
+  };
+
+  // Masks anything that looks like an email address or a phone or street number
+  // before the detail is written to the console.
+  const sanitizeWeb3FormsDetail = (text) =>
+    String(text || "")
+      .replace(/[^\s@]+@[^\s@]+/g, "[email]")
+      .replace(/\d{3,}/g, "[number]")
+      .slice(0, 160);
+
   forms.forEach((form) => {
     const status = form.querySelector("[data-form-status]");
     const submitButton = form.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton ? submitButton.innerHTML : "";
+    let originalButtonText = submitButton ? submitButton.innerHTML : "";
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -323,6 +352,7 @@ const initWeb3Forms = () => {
       status.className = "form-status is-visible is-loading";
       submitButton.disabled = true;
       submitButton.style.opacity = "0.7";
+      originalButtonText = submitButton.innerHTML;
       submitButton.innerHTML = "Submitting...";
 
       const formData = new FormData(form);
@@ -347,10 +377,15 @@ const initWeb3Forms = () => {
           }
         );
 
-        const result = await response.json();
+        // Web3Forms documents success at the top level, and the description of a
+        // 400 under body.message. A non-JSON body is treated as a failure.
+        const { success, detail } = await readWeb3FormsResult(response);
 
-        if (!response.ok || !result.success) {
-          throw new Error(result.message || "Submission failed.");
+        if (!response.ok || !success) {
+          const failure = new Error("Submission failed.");
+          failure.httpStatus = response.status;
+          failure.detail = detail;
+          throw failure;
         }
 
         const successMessage =
@@ -362,6 +397,7 @@ const initWeb3Forms = () => {
         // No personal data (name/email/phone/address/details) is sent.
         jcAnalytics.gaEvent("generate_lead", {
           form_name: form.dataset.formName || "estimate_form",
+          form_id: form.dataset.formName || "estimate_form",
           page_location: window.location.pathname,
           service_interest: formData.get("service_type") || undefined
         });
@@ -370,11 +406,26 @@ const initWeb3Forms = () => {
         form.reset();
         status.textContent = successMessage;
         status.className = "form-status is-visible is-success";
-        showFormSuccessMessage(successMessage);
+        if (form.dataset.successModal !== "off") {
+          showFormSuccessMessage(successMessage);
+        }
       } catch (error) {
+        const httpStatus = (error && error.httpStatus) || 0;
+        // Development diagnostic: HTTP status and Web3Forms' description only.
+        // The payload, names, emails, phone numbers and addresses are never logged.
+        console.warn(
+          `[estimate-form] submission failed: HTTP ${httpStatus}. ${sanitizeWeb3FormsDetail(error && error.detail)}`
+        );
         status.textContent =
+          form.dataset.errorMessage ||
           "We couldn't submit your request right now. Please use the Call or Email button and try again shortly.";
         status.className = "form-status is-visible is-error";
+        jcAnalytics.gaEvent("form_error", {
+          form_id: form.dataset.formName || "estimate_form",
+          error_type: "submission_failed",
+          http_status: httpStatus,
+          page_location: window.location.pathname
+        });
       } finally {
         submitButton.disabled = false;
         submitButton.style.opacity = "1";

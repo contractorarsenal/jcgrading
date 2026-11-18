@@ -22,7 +22,7 @@
     })(window, document, "clarity", "script", "yct3vyvxio");
   </script>
 
-  <title>JC Grading Paving Solution, Inc. | South Bay Grading, Paving &amp; Concrete</title>
+  <title>Asphalt Paving, Sealcoating &amp; Patching | JC Grading | South Bay</title>
   <meta name="description" content="South Bay grading, paving, excavation, and concrete. JC Grading delivers correct prep, clean finishes, and surfaces built to last. Licensed &amp; Insured.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://jcgradingpavingsolution.com/">
@@ -49,9 +49,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/tailwind.build.css">
   <link rel="stylesheet" href="assets/css/jc-components.css">
+  <link rel="stylesheet" href="assets/css/contact-form.css?v=6">
   <link rel="stylesheet" href="assets/css/tailwind-pages.css?v=web3forms-confirmation-2">
   <script defer src="assets/js/maps-config.js"></script>
-  <script defer src="assets/js/site.js?v=web3forms-confirmation-2"></script>
+  <script defer src="assets/js/site.js?v=email-click-4"></script>
+  <script defer src="assets/js/contact-form.js?v=2"></script>
   <script defer src="assets/js/address-autocomplete.js"></script>
 
   <script type="application/ld+json">
@@ -667,86 +669,62 @@
     </section>
 
     <!-- ── QUICK REQUEST ── -->
-    <section class="bg-white py-28" id="quick-form" aria-labelledby="quick-form-heading">
-      <div class="mx-auto max-w-[860px] px-4 sm:px-6 lg:px-8">
-        <div class="jc-form-panel">
-          <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#c25a2a">Quick Request</p>
-          <h2 id="quick-form-heading" class="jc-d mt-3 mb-5" style="font-size:clamp(1.8rem,3.5vw,2.6rem);color:#16171a">Start your estimate.</h2>
-          <p class="mb-8 max-w-2xl text-base leading-7 text-zinc-600">Looking for grading, paving, concrete, drainage, or excavation work in the South Bay? Share your project details and we'll follow up with a clear next step.</p>
-          <form class="web3form grid gap-5" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" data-success-message="Thanks for reaching out to JC Grading. We'll follow up shortly." data-form-name="quick_estimate">
-            <input type="hidden" name="access_key" value="28827061-49d0-4755-a3db-cade000952df">
-            <input type="hidden" name="subject" value="New estimate request from JC Grading homepage">
-            <input type="hidden" name="from_name" value="JC Grading Homepage">
-            <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
-            <div>
-              <label class="jc-flabel" for="est-name">Name</label>
-              <input id="est-name" name="name" type="text" class="jc-field" autocomplete="name" required>
+    <section class="bg-white py-24" id="quick-form" aria-labelledby="quick-form-heading">
+      <div class="mx-auto px-4 sm:px-6 lg:px-8 cf-layout">
+        <div class="cf-info">
+          <p class="cf-eyebrow">Contact JC Grading</p>
+          <h2 id="quick-form-heading" class="cf-info-title">Let's talk about your project.</h2>
+          <p class="cf-info-text">Grading, asphalt paving, sealcoating, and patching across the South Bay and Peninsula. We check the base before anything is quoted.</p>
+          <div class="cf-actions">
+            <a class="cf-call" href="tel:+14086568639" data-phone-link>Call Now</a>
+            <a class="cf-email" href="mailto:projects@jcgradingpavingsolution.com">Email Us</a>
+          </div>
+          <dl class="cf-details">
+            <div><dt class="cf-label">Service area</dt><dd>South Bay and Peninsula</dd></div>
+          </dl>
+          <div class="cf-next">
+            <p class="cf-eyebrow">What happens next</p>
+            <ol class="cf-steps">
+              <li>We review your request.</li>
+              <li>We follow up by phone or email.</li>
+              <li>We walk the site before anything is quoted.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="cf-card">
+          <p class="cf-eyebrow">Project Inquiry</p>
+          <h3 class="cf-card-title">Get a Free Estimate</h3>
+          <p class="cf-card-text">Tell us where your project is located and how to reach you. Our team will follow up.</p>
+          <form class="web3form cf-form" data-form-name="quick_estimate" action="https://api.web3forms.com/submit" method="POST" data-success-message="Thanks! Your request has been sent. Our team will be in touch." data-error-message="We couldn't send your request. Please try again or use the Call Now button." data-success-modal="off" novalidate>
+          <input type="hidden" name="access_key" value="28827061-49d0-4755-a3db-cade000952df">
+              <input type="hidden" name="subject" value="New estimate request from JC Grading homepage">
+              <input type="hidden" name="from_name" value="JC Grading Homepage">
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off">
+          <div class="cf-grid">
+            <div class="cf-field">
+              <label class="cf-label" for="home-name">Full Name</label>
+              <input class="cf-input" id="home-name" name="name" type="text" autocomplete="name" required aria-describedby="home-name-error">
+                <p class="cf-error" id="home-name-error" data-error-for="name"></p>
             </div>
-            <div class="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label class="jc-flabel" for="est-phone">Phone</label>
-                <input id="est-phone" name="phone" type="tel" class="jc-field" autocomplete="tel" required>
-              </div>
-              <div>
-                <label class="jc-flabel" for="est-email">Email</label>
-                <input id="est-email" name="email" type="email" class="jc-field" autocomplete="email" required>
-              </div>
+            <div class="cf-field">
+              <label class="cf-label" for="home-email">Email Address</label>
+              <input class="cf-input" id="home-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="home-email-error">
+                <p class="cf-error" id="home-email-error" data-error-for="email"></p>
             </div>
-            <div>
-              <label class="jc-flabel" for="est-street">Street Address</label>
-              <input id="est-street" name="project_street_address" type="text" class="jc-field" autocomplete="street-address" required data-address-street data-address-error="Enter the project street address.">
+            <div class="cf-field">
+              <label class="cf-label" for="home-phone">Phone Number</label>
+              <input class="cf-input" id="home-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(408) 000-0000" required aria-describedby="home-phone-error">
+                <p class="cf-error" id="home-phone-error" data-error-for="phone"></p>
             </div>
-            <div class="grid gap-5 sm:grid-cols-[1.6fr_1fr_1fr]">
-              <div>
-                <label class="jc-flabel" for="est-city">City</label>
-                <input id="est-city" name="project_city" type="text" class="jc-field" autocomplete="address-level2" required data-address-city data-address-error="Enter the project city.">
-              </div>
-              <div>
-                <label class="jc-flabel" for="est-state">State</label>
-                <select id="est-state" name="project_state" class="jc-field" autocomplete="address-level1" required data-address-state data-address-error="Select a state.">
-                  <option value="Alabama">Alabama</option><option value="Alaska">Alaska</option><option value="Arizona">Arizona</option><option value="Arkansas">Arkansas</option><option value="California" selected>California</option><option value="Colorado">Colorado</option><option value="Connecticut">Connecticut</option><option value="Delaware">Delaware</option><option value="District of Columbia">District of Columbia</option><option value="Florida">Florida</option><option value="Georgia">Georgia</option><option value="Hawaii">Hawaii</option><option value="Idaho">Idaho</option><option value="Illinois">Illinois</option><option value="Indiana">Indiana</option><option value="Iowa">Iowa</option><option value="Kansas">Kansas</option><option value="Kentucky">Kentucky</option><option value="Louisiana">Louisiana</option><option value="Maine">Maine</option><option value="Maryland">Maryland</option><option value="Massachusetts">Massachusetts</option><option value="Michigan">Michigan</option><option value="Minnesota">Minnesota</option><option value="Mississippi">Mississippi</option><option value="Missouri">Missouri</option><option value="Montana">Montana</option><option value="Nebraska">Nebraska</option><option value="Nevada">Nevada</option><option value="New Hampshire">New Hampshire</option><option value="New Jersey">New Jersey</option><option value="New Mexico">New Mexico</option><option value="New York">New York</option><option value="North Carolina">North Carolina</option><option value="North Dakota">North Dakota</option><option value="Ohio">Ohio</option><option value="Oklahoma">Oklahoma</option><option value="Oregon">Oregon</option><option value="Pennsylvania">Pennsylvania</option><option value="Rhode Island">Rhode Island</option><option value="South Carolina">South Carolina</option><option value="South Dakota">South Dakota</option><option value="Tennessee">Tennessee</option><option value="Texas">Texas</option><option value="Utah">Utah</option><option value="Vermont">Vermont</option><option value="Virginia">Virginia</option><option value="Washington">Washington</option><option value="West Virginia">West Virginia</option><option value="Wisconsin">Wisconsin</option><option value="Wyoming">Wyoming</option>
-                </select>
-              </div>
-              <div>
-                <label class="jc-flabel" for="est-zip">ZIP Code</label>
-                <input id="est-zip" name="project_zip" type="text" class="jc-field" autocomplete="postal-code" required inputmode="numeric" maxlength="5" pattern="[0-9]{5}" data-address-zip data-address-error="Enter a valid 5-digit ZIP code.">
-              </div>
+            <div class="cf-field">
+              <label class="cf-label" for="home-address">Project Address</label>
+              <input class="cf-input" id="home-address" name="project_street_address" type="text" autocomplete="street-address" placeholder="123 Main Street" required aria-describedby="home-address-error">
+                <p class="cf-error" id="home-address-error" data-error-for="project_street_address"></p>
             </div>
-            <div>
-              <label class="jc-flabel" for="est-unit">Unit / Suite <span style="text-transform:none;font-weight:400;color:#a39c8e">(Optional)</span></label>
-              <input id="est-unit" name="project_unit" type="text" class="jc-field" autocomplete="address-line2" data-address-unit>
-            </div>
-            <input type="hidden" name="project_address_full">
-            <div>
-              <label class="jc-flabel" for="est-service">Service Needed</label>
-              <select id="est-service" name="service_type" class="jc-field" required>
-                <option value="" selected disabled>Select a service</option>
-                <option>Driveway Paving</option>
-                <option>Parking Lot Paving</option>
-                <option>Grading &amp; Excavation</option>
-                <option>Concrete Flatwork</option>
-                <option>Repair &amp; Restoration</option>
-                <option>StormWorks / Winter Drainage</option>
-                <option>Financing Question</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div>
-              <label class="jc-flabel" for="est-details">Project Details</label>
-              <textarea id="est-details" name="project_details" class="jc-textarea" required></textarea>
-            </div>
-            <div>
-              <label class="jc-flabel" for="est-photos">Project Photos (Optional)</label>
-              <input id="est-photos" name="photos" type="file" accept="image/*" multiple class="jc-field" style="padding-top:12px;height:auto;min-height:50px">
-              <p class="mt-2 text-xs text-zinc-500">Photos help us understand the project. Up to 5MB per photo.</p>
-            </div>
-            <div class="h-captcha" data-captcha="true"></div>
-            <button type="submit" class="jc-cut inline-flex w-full items-center justify-center font-bold text-white transition hover:opacity-90" style="height:54px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;background:#16171a;border:none;cursor:pointer">Send Estimate Request</button>
-            <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;text-align:center;color:#807a6e">Reply same business day · No spam</p>
-            <p class="text-xs leading-6 text-zinc-500 text-center">By submitting this form, you authorize JC Grading Paving Solution, Inc. to contact you about your project by phone, text, or email. See our <a class="font-semibold text-construction-orange hover:text-construction-orange-dark" href="privacy.html">Privacy Policy</a>.</p>
-            <p class="form-status" data-form-status aria-live="polite"></p>
-          </form>
-          <p class="mt-6 text-sm leading-6 text-zinc-600">Need the full estimate form? <a class="font-semibold text-construction-orange transition hover:text-construction-orange-dark" href="contact.html#estimate-form">Open the contact page</a>.</p>
+          </div>
+          <button type="submit" class="cf-submit" data-submit>REQUEST MY ESTIMATE</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
         </div>
       </div>
     </section>

@@ -1,0 +1,339 @@
+/* Single-page estimate section: homepage and contact page.
+   Uses JC's tokens: orange #c25a2a, ink #16171a, warm white, concrete gray #f4f4f4. */
+
+/* Constrained, centred layout. The compiled Tailwind file has no max-w-6xl or
+   mx-auto for this wrapper, so the width is set here, scoped to the estimate
+   component (homepage and contact page). */
+.cf-layout {
+  box-sizing: border-box;
+  width: min(100% - 48px, 1180px);
+  margin-inline: auto;
+  display: grid;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .cf-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 56px;
+    align-items: start;
+  }
+}
+
+.cf-info {
+  min-width: 0;
+  display: grid;
+  gap: 28px;
+}
+
+.cf-eyebrow {
+  margin: 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c25a2a;
+}
+
+.cf-info-title {
+  margin: 0;
+  font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #16171a;
+}
+
+.cf-info-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #5f5a50;
+}
+
+.cf-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 60px;
+  background: #16171a;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.cf-call:hover {
+  background: #c25a2a;
+}
+
+/* Contact actions: CALL NOW and EMAIL US, stacked full width. */
+.cf-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.cf-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 60px;
+  background: transparent;
+  border: 1px solid #16171a;
+  color: #16171a;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.cf-email:hover {
+  background: #16171a;
+  color: #fff;
+}
+
+.cf-call:focus-visible,
+.cf-email:focus-visible,
+.cf-submit:focus-visible,
+.cf-input:focus-visible,
+.cf-details a:focus-visible {
+  outline: 3px solid rgba(194, 90, 42, 0.45);
+  outline-offset: 2px;
+}
+
+.cf-details {
+  margin: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid #d9d4c9;
+}
+
+.cf-details > div {
+  padding: 16px 0;
+  border-bottom: 1px solid #d9d4c9;
+}
+
+.cf-details dd {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: #16171a;
+}
+
+.cf-details a {
+  color: #16171a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.cf-next {
+  padding-top: 8px;
+}
+
+.cf-steps {
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  counter-reset: step;
+}
+
+.cf-steps li {
+  position: relative;
+  padding-left: 36px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #16171a;
+  counter-increment: step;
+}
+
+.cf-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #16171a;
+  color: #fff;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cf-card {
+  min-width: 0;
+  background: #fbf8f2;
+  border-top: 3px solid #c25a2a;
+  box-shadow: 0 12px 32px rgba(22, 23, 26, 0.08);
+  padding: 28px 24px;
+}
+
+@media (min-width: 640px) {
+  .cf-card {
+    padding: 40px;
+  }
+}
+
+.cf-card-title {
+  margin: 10px 0 0;
+  font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: #16171a;
+}
+
+.cf-card-text {
+  margin: 12px 0 24px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5f5a50;
+}
+
+.cf-form {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.cf-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .cf-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 16px;
+  }
+}
+
+.cf-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.cf-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #5f5a50;
+}
+
+.cf-input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 52px;
+  padding: 0 14px;
+  background: #fff;
+  border: 1px solid #d6d1c7;
+  border-radius: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px; /* 16px stops iOS zooming on focus */
+  color: #16171a;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.cf-input::placeholder {
+  color: #9b958a;
+}
+
+.cf-input[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+.cf-error {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #b42318;
+}
+
+.cf-error:not(.is-visible) {
+  display: none;
+}
+
+.cf-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 58px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: 0;
+  background: #c25a2a;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cf-submit:hover {
+  background: #a84a22;
+}
+
+.cf-submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.cf-form .form-status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cf-form .form-status.is-error {
+  color: #b42318;
+}
+
+.cf-form .form-status.is-success {
+  color: #1f6b3a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cf-call,
+  .cf-submit {
+    transition: none !important;
+  }
+}
+
+/* Contact hero: confirmed issue. The hero was about 563px tall at 1440px and the
+   headline reached 80px, so the form started near the bottom of a laptop viewport.
+   Reduce vertical padding and cap the headline. Nothing else in the hero changes. */
+section[aria-labelledby="contact-hero-heading"] .z-10 {
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+#contact-hero-heading {
+  font-size: clamp(2.8rem, 5vw, 4.5rem) !important;
+}
